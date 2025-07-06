@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Smart Humidifier - Jacob Fletcher</title>
+    <style>
+        /* 
+        ========================================
+        GENERAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            /* Mobile scrolling fixes */
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ensure smooth scrolling on all devices */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 
+        ========================================
+        HEADER & NAVIGATION
+        ========================================
+        */
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .back-link:hover {
+            color: #cccccc;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .contact-link:hover {
+            color: #cccccc;
+        }
+
+        /* 
+        ========================================
+        PROJECT CONTENT
+        ========================================
+        */
+        main {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #09aae5, #0679b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .project-embed {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            display: block;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 3rem;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-info {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #09aae5;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-info p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #09aae5;
+        }
+
+        .tech-stack h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .tech-item:hover {
+            background: #505050;
+            border-color: #09aae5;
+            box-shadow: 0 0 15px rgba(9, 170, 229, 0.3);
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active {
+                background: #505050;
+                border-color: #09aae5;
+                box-shadow: 0 0 10px rgba(9, 170, 229, 0.3);
+            }
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            -webkit-transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            /* Mobile touch improvements */
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #09aae5 transparent transparent transparent;
+        }
+        
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active .tooltip {
+                visibility: visible;
+                opacity: 0.9;
+            }
+        }
+
+        /* Classic tooltip: always above, centered, never overflows, arrow always visible */
+        .tech-item .tooltip {
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 95vw;
+            min-width: 180px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            padding: 1.1rem 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .tech-item .tooltip {
+                font-size: 0.95rem;
+                padding: 0.8rem 0.7rem;
+                min-width: 0;
+            }
+        }
+        /* Prevent overflow: clamp the left position */
+        @media (max-width: 1200px) {
+            .tech-item .tooltip {
+                left: clamp(8px, 50%, calc(100vw - 8px - 300px));
+                transform: none;
+            }
+        }
+
+        .project-description {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #09aae5;
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-description p {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 
+        ========================================
+        MOBILE RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-info,
+            .tech-stack,
+            .project-description {
+                padding: 1.5rem;
+            }
+            
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            .back-link,
+            .contact-link {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            .tech-item {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            main {
+                padding: 1rem;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .project-subtitle {
+                font-size: 1rem;
+            }
+            .project-info,
+            .tech-stack,
+            .project-description {
+                padding: 1rem;
+            }
+            .tech-item {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .tech-item .tooltip {
+                font-size: 0.75rem;
+                padding: 0.8rem;
+            }
+            input, textarea, select {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <a href="#contact" class="contact-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">Minimalist Smart Humidifier</h1>
+            <p class="project-subtitle">A User-Centric Redesign for Modern Living</p>
+        </div>
+
+        <div class="project-embed" style="
+            border-radius: 12px;
+            padding: 4px;
+            background: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        " onmouseover="this.style.border='2px solid #09aae5'; this.style.transform='scale(1.02)'" 
+           onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+            <iframe width="100%" height="800" style="border: none; margin: 0; border-radius: 8px; background: #1a1a1a;" src="https://www.canva.com/design/DAF79SGjX8E/gUgR5VA7BlQF1ac_ocoMrA/view?embed" allowfullscreen="allowfullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview & Process</h3>
+                <p>This project documents the complete redesign of a consumer humidifier, driven by a mission to address common user pain points. Through a comprehensive process of reverse engineering, market research, and user journey analysis, a basic "flame diffuser" was transformed into an intelligent, aesthetically pleasing, and user-friendly smart device.</p>
+                
+                <p>The final design introduces high-value features like precise humidity control via a dial, real-time feedback on an OLED screen, and a visually appealing form factor based on the golden ratio, all while maintaining an affordable production cost.</p>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technologies & Skills</h3>
+                <div class="tech-list">
+                    <span class="tech-item">
+                        Rhinoceros 7
+                        <div class="tooltip">
+                            <strong>Rhinoceros 7:</strong> Utilized for precise 3D modeling of all components, including the detailed housing, internal mounts, and water reservoir, ensuring a perfect fit for all parts.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        AI-Powered Concepting
+                        <div class="tooltip">
+                            <strong>AI-Powered Concepting (DALL-E 3):</strong> Leveraged generative AI to rapidly explore diverse aesthetic directions, including organic, futuristic, and retro styles, accelerating the initial ideation phase.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Design for Manufacturing (DFM)
+                        <div class="tooltip">
+                            <strong>Design for Manufacturing (DFM):</strong> The entire design was created with production in mind, incorporating draft angles, parting lines, and material considerations for efficient injection molding.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        Reverse Engineering
+                        <div class="tooltip">
+                            <strong>Reverse Engineering:</strong> Disassembled and analyzed an existing product to understand its construction, identify its weaknesses, and establish a baseline for improvement.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        User Journey Analysis
+                        <div class="tooltip">
+                            <strong>User Journey Analysis:</strong> Mapped out the user experience from unboxing to daily use and maintenance, identifying key pain points to solve in the redesigned product.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        Component Integration
+                        <div class="tooltip">
+                            <strong>Component Integration:</strong> Designed the housing to seamlessly integrate new electronic components, including an OLED screen, potentiometer, humidity sensor, and USB-C port.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Technical Drawing
+                        <div class="tooltip">
+                            <strong>Technical Drawing:</strong> Produced detailed technical drawings conforming to BS 8888 standards, including dimensioned views and assembly diagrams for manufacturing and quality control.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Cost Analysis & BOM
+                        <div class="tooltip">
+                            <strong>Cost Analysis & Bill of Materials:</strong> Created a comprehensive Bill of Materials (BOM), sourcing components and estimating production costs to ensure the final product is commercially viable.
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h3>Project Details</h3>
+            <p><strong>Analysis and Insight:</strong> The project began with the deconstruction of a popular, low-cost "flame" humidifier. This hands-on analysis revealed significant design flaws: a complete lack of humidity control, a top that could be attached incorrectly, a lightweight and "cheap" feel, and hidden areas prone to mold growth. Market research confirmed a gap between these basic models and expensive, feature-rich alternatives.</p>
+            
+            <p><strong>Iterative Design & Prototyping:</strong> Initial concepts were explored using AI, leading to a minimalist cube form. The core of the redesign was adding intelligence: an OLED screen, a potentiometer for tactile control, and a humidity sensor. The design evolved through multiple iterations, simplifying a complex frame-and-panel assembly into an elegant one-piece glass top. This change not only improved aesthetics but also made the device easier to clean and visually monitor.</p>
+            
+            <p><strong>Engineering for Production:</strong> Every component was modeled with manufacturing in mind. The project includes detailed considerations for injection molding, such as draft angles and parting line placement to minimize visual defects. A complete Bill of Materials (BOM) was developed, calculating the total cost per unit and demonstrating a clear path from design to a profitable, market-ready product.</p>
+            
+            <h3 style="margin-top:2rem;">Design Rationale</h3>
+            <p>The final design successfully elevates a basic appliance into a sophisticated smart device. It directly solves the identified user problems by providing precise control, improving ease of maintenance, and enhancing the perceived value through a thoughtful aesthetic and better materials. This project is a testament to a holistic design process that balances user empathy, engineering rigor, and business viability to create a genuinely better product.</p>
+        </div>
+    </main>
+</body>
+</html> 

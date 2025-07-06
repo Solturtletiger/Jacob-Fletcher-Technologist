@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reforester Slingstar - Jacob Fletcher</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            position: relative;
+        }
+        html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .back-link, .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .back-link:hover, .contact-link:hover { color: #cccccc; }
+        .back-link::before { content: "← "; margin-right: 0.5rem; }
+        main { padding: 3rem; max-width: 1200px; margin: 0 auto; }
+        .project-header { text-align: center; margin-bottom: 3rem; }
+        .project-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-subtitle { font-size: 1.2rem; color: #cccccc; margin-bottom: 2rem; }
+        .project-embed {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            display: block;
+        }
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 3rem;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .project-info {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #4caf50;
+            margin-bottom: 2rem;
+        }
+        .project-info h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; }
+        .project-info p { color: #cccccc; line-height: 1.8; }
+        .project-info ul { list-style-position: inside; padding-left: 0; }
+        .project-info li { color: #cccccc; margin-bottom: 0.5rem; }
+        .tech-stack {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #4caf50;
+        }
+        .tech-stack h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; }
+        .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .tech-item:hover {
+            background: #505050;
+            border-color: #4caf50;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active {
+                background: #505050;
+                border-color: #4caf50;
+                box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+            }
+        }
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            -webkit-transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #4caf50 transparent transparent transparent;
+        }
+        .tech-item:hover .tooltip { visibility: visible; opacity: 1; }
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active .tooltip { visibility: visible; opacity: 0.9; }
+        }
+        .tech-item .tooltip {
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 95vw;
+            min-width: 180px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            padding: 1.1rem 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .tech-item .tooltip {
+                font-size: 0.95rem;
+                padding: 0.8rem 0.7rem;
+                min-width: 0;
+            }
+        }
+        @media (max-width: 1200px) {
+            .tech-item .tooltip {
+                left: clamp(8px, 50%, calc(100vw - 8px - 300px));
+                transform: none;
+            }
+        }
+        .project-description {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #4caf50;
+        }
+        .project-description h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; }
+        .project-description p { color: #cccccc; line-height: 1.8; margin-bottom: 1rem; }
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            main { padding: 1.5rem; }
+            .project-title { font-size: 2rem; }
+            .project-details { grid-template-columns: 1fr; gap: 2rem; }
+            .project-info, .tech-stack, .project-description { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            header { padding: 0.8rem 1rem; }
+            main { padding: 1rem; }
+            .project-title { font-size: 1.8rem; }
+            .project-subtitle { font-size: 1rem; }
+            .project-info, .tech-stack, .project-description { padding: 1rem; }
+            .tech-item { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+            .tech-item .tooltip { font-size: 0.75rem; padding: 0.8rem; }
+            input, textarea, select { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <a href="#contact" class="contact-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">Reforester Slingstar</h1>
+            <p class="project-subtitle">An Ergonomic, Geared Device for High-Velocity Seed Dispersal</p>
+        </div>
+
+        <img class="project-image" src="images/slingster.jpeg" alt="Reforester Slingstar Product Render">
+
+        <div class="project-embed" style="
+            border-radius: 12px;
+            padding: 4px;
+            background: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        " onmouseover="this.style.border='2px solid #4caf50'; this.style.transform='scale(1.02)'" 
+           onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+            <iframe width="100%" height="680" style="border: none; margin: 0; border-radius: 8px; background: #1a1a1a;" src="https://www.canva.com/design/DAF48DfPSqk/Bv_XyAnSMN-xTEOxWV5aOQ/view?embed" allowfullscreen="allowfullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview & Process</h3>
+                <p>This project documents the design, prototyping, and analysis of the Reforester Slingstar, a manually-operated device engineered for efficient, long-range seed dispersal. The core innovation is a crank-driven, compound gear-and-pulley system that provides significant mechanical advantage, allowing a user to tension powerful elastic bungees with minimal effort. The result is a proof-of-concept for a robust, portable, and accessible reforestation tool. The project demonstrates a complete engineering design cycle, from initial concept validation through iterative physical prototyping, data-driven analysis, and final CAD modeling.</p>
+                <ul style="margin-top:1.5rem;">
+                    <li><strong>Propulsion System:</strong> Mechanical slingshot powered by multiple elastic bungees.</li>
+                    <li><strong>Winding Mechanism:</strong> Manually-operated crank integrated with a compound gear train and pulley system to multiply user input force.</li>
+                    <li><strong>Gear Ratio:</strong> 1.375:1 (driven:driver) to increase input torque and facilitate easy winding against high bungee tension.</li>
+                    <li><strong>Chassis & Ergonomics:</strong> A "bazooka-style" shoulder-mounted body designed for stability, user comfort, and intuitive aiming.</li>
+                    <li><strong>Prototyping Materials:</strong> Wood, laser-cut cardboard, and 3D-printed components (PLA/ABS) for rapid iteration and mechanical testing.</li>
+                </ul>
+                
+                <div style="margin-top: 2rem;">
+                    <iframe width="100%" height="400" style="border: none; margin: 0; border-radius: 8px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);" src="https://www.youtube.com/embed/uUBnBejet2c" title="Reforester Slingstar Demo" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="tech-stack">
+                <h3>Technologies & Skills</h3>
+                <div class="tech-list">
+                    <span class="tech-item">Mechanical Systems Design<div class="tooltip"><strong>Mechanical Systems Design</strong><br>Designing and optimizing complex gear, pulley, and elastic systems for efficient energy transfer and robust operation.</div></span>
+                    <span class="tech-item">Iterative Prototyping<div class="tooltip"><strong>Iterative Prototyping</strong><br>Building and testing multiple physical prototypes to identify and resolve mechanical and ergonomic challenges.</div></span>
+                    <span class="tech-item">CAD (Solid Modeling & Assembly)<div class="tooltip"><strong>CAD (Solid Modeling & Assembly)</strong><br>Creating detailed 3D models and assemblies to validate fit, function, and manufacturability before fabrication.</div></span>
+                    <span class="tech-item">Engineering Calculations<div class="tooltip"><strong>Engineering Calculations</strong><br>Applying physics and mathematics to calculate gear ratios, spring constants, and predict system performance.</div></span>
+                    <span class="tech-item">Rapid Fabrication<div class="tooltip"><strong>Rapid Fabrication</strong><br>Utilizing 3D printing and laser cutting for fast, iterative development and mechanical testing.</div></span>
+                    <span class="tech-item">FEA Analysis<div class="tooltip"><strong>FEA Analysis</strong><br>Conducting finite element analysis to validate structural integrity, predict stress concentrations, and optimize component design for manufacturability.</div></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h3>Project Details</h3>
+            <ol style="margin-left:1.5rem;">
+                <li><strong>Concept Validation & First Prototype</strong><br>
+                    Initial ideation explored pneumatic and electromagnetic concepts before selecting a mechanical slingshot for its robustness, reliability, and independence from external power sources. A first-pass wooden prototype was constructed to validate the core winding and release mechanism.<br>
+                    <em>Key Findings:</em> Testing revealed several critical failure points:
+                    <ul>
+                        <li><strong>Insufficient Torque:</strong> The initial direct-drive system required excessive force to operate.</li>
+                        <li><strong>High Friction:</strong> The simple gear design and bungee alignment led to significant energy loss and inconsistent rotation.</li>
+                        <li><strong>Mechanical Catching:</strong> Spur gear teeth were not optimized, causing catches and unreliable performance under load.</li>
+                    </ul>
+                </li>
+                <li><strong>Engineering Analysis & Data-Driven Refinement</strong><br>
+                    In response to the initial prototype's failures, the team conducted targeted analysis to inform the next design iteration.<br>
+                    <ul>
+                        <li><strong>Gear System Redesign:</strong> The gear train was re-engineered to have the smaller gear act as the driver, establishing a 1.375 torque-multiplying ratio.</li>
+                        <li><strong>Elasticity Calculation:</strong> Physical experiments were performed to determine the spring constant of the bungee material. By measuring extension under various loads, we calculated an average spring constant of 22.1 N/m, enabling us to predict the force required for winding and the potential energy stored.</li>
+                    </ul>
+                </li>
+                <li><strong>Second Prototype & Mechanical Validation</strong><br>
+                    A second, higher-fidelity prototype was built using 3D-printed components to test the refined mechanics. This iteration integrated the new gear ratio and a pulley system to improve bungee alignment.<br>
+                    <em>Key Findings:</em> While the winding torque was successfully reduced, new challenges related to material strength and structural integrity emerged:
+                    <ul>
+                        <li><strong>Component Deformation:</strong> The cut metal bar used as an axle bent under tension, obstructing pulley movement.</li>
+                        <li><strong>System Instability:</strong> The main winding gear exhibited lateral shifting during operation, indicating a need for improved housing and axle support.</li>
+                    </ul>
+                </li>
+                <li><strong>FEA Analysis & Structural Optimization</strong><br>
+                    Finite Element Analysis was conducted on critical components to validate structural integrity and predict failure modes under operational loads. The analysis focused on:
+                    <ul>
+                        <li><strong>Stress Distribution:</strong> Simulated the complex loading conditions from bungee tension, gear forces, and user input to identify potential stress concentrations in the housing and gear components.</li>
+                        <li><strong>Deformation Analysis:</strong> Predicted component deflection under maximum operational loads to ensure the system maintains dimensional stability and proper gear meshing.</li>
+                        <li><strong>Material Optimization:</strong> Used FEA results to guide material selection and wall thickness optimization for 3D-printed components, balancing strength requirements with weight and manufacturability constraints.</li>
+                        <li><strong>Safety Factor Validation:</strong> Ensured all components maintained appropriate safety factors under worst-case loading scenarios, particularly for the high-stress areas around gear teeth and bearing surfaces.</li>
+                    </ul>
+                </li>
+            </ol>
+            <h3 style="margin-top:2rem;">Final Design & Project Rationale</h3>
+            <p>The final Reforester Slingstar design is a synthesis of the lessons learned throughout the iterative development process. It consists of a fully-realized CAD model featuring a robust, fully enclosed housing that secures all mechanical components, preventing the instability observed in earlier prototypes.</p>
+            <p>The project successfully demonstrates the application of engineering principles to develop a novel solution for a real-world environmental challenge. The rigorous process of prototyping, testing, analyzing failure, and implementing data-driven improvements showcases a comprehensive understanding of the mechanical design lifecycle. The resulting concept is a highly functional, ergonomic, and manufacturable device for accessible reforestation.</p>
+        </div>
+    </main>
+</body>
+</html> 

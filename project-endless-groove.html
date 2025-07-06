@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Groove - Jacob Fletcher</title>
+    <style>
+        /* 
+        ========================================
+        GENERAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            /* Mobile scrolling fixes */
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ensure smooth scrolling on all devices */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 
+        ========================================
+        HEADER & NAVIGATION
+        ========================================
+        */
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .back-link:hover {
+            color: #cccccc;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .contact-link:hover {
+            color: #cccccc;
+        }
+
+        /* 
+        ========================================
+        PROJECT CONTENT
+        ========================================
+        */
+        main {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #cb7230, #a85a26);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .project-embed {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            display: block;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-embed:hover {
+            border-color: #cb7230;
+            transform: scale(1.02);
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 3rem;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-info {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #cb7230;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-info p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #cb7230;
+        }
+
+        .tech-stack h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .tech-item:hover {
+            background: #505050;
+            border-color: #cb7230;
+            box-shadow: 0 0 15px rgba(203, 114, 48, 0.3);
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active {
+                background: #505050;
+                border-color: #cb7230;
+                box-shadow: 0 0 10px rgba(203, 114, 48, 0.3);
+            }
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            -webkit-transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            /* Mobile touch improvements */
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1a1a1a transparent transparent transparent;
+        }
+        
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active .tooltip {
+                visibility: visible;
+                opacity: 0.9;
+            }
+        }
+
+        .project-description {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #cb7230;
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-description p {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 
+        ========================================
+        TEAM SECTION STYLES
+        ========================================
+        */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: #333333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid #cb7230;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: #404040;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member h4 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .team-member .role {
+            color: #cccccc;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cb7230;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .linkedin-link:hover {
+            color: #e67e22;
+            transform: translateX(3px);
+        }
+
+        .linkedin-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .linkedin-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* 
+        ========================================
+        MOBILE RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-info,
+            .tech-stack,
+            .project-description {
+                padding: 1.5rem;
+            }
+            
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            .back-link,
+            .contact-link {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            .tech-item {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .tech-item .tooltip {
+                position: fixed; left: 50%; bottom: 24px; top: auto; right: auto;
+                transform: translateX(-50%); width: 95vw; max-width: 420px;
+                z-index: 9999;
+            }
+            .tech-item .tooltip::after { display: none; }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .team-member {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            main {
+                padding: 1rem;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .project-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <a href="#contact" class="contact-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">Endless Groove</h1>
+            <p class="project-subtitle">The Ultimate 3-in-1 Festival Kit</p>
+        </div>
+
+        <div class="project-embed">
+            <iframe width="100%" height="800" style="border: none; margin: 0; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);" src="https://www.canva.com/design/DAGsbpeFkhs/CgVSOdfDWAuyo48OlPlfqg/view?embed" allowfullscreen="allowfullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview</h3>
+                <p>Endless Groove is a comprehensive product-service system designed to solve the most common festival frustrations. It is an all-in-one solution that enhances the user experience by combining three essential items into one clever, convertible product: a stylish shoulder bag, a waterproof Gore-Tex coat, and an inflatable seat.</p>
+                
+                <p>More than just a product, Endless Groove promotes social interaction. The inflatable seats feature a unique ball-and-loop system, allowing users to connect their seats together to create larger, shared spaces for "social seating." The project bridges the gap between single-use ponchos and expensive outdoor gear, offering a durable, reusable, and trend-conscious solution.
+                </p>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technologies & Skills</h3>
+                <div class="tech-list">
+                    <span class="tech-item">
+                        Product & Service Design
+                        <div class="tooltip">
+                            <strong>Product & Service Design:</strong> Conceived and developed a complete Product-Service System (PSS) that combines a physical product with brand collaborations, social media engagement, and potential rental models.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        User-Centred Design
+                        <div class="tooltip">
+                            <strong>User-Centred Design:</strong> The entire concept is built on deep analysis of the target user (young festival-goers), identifying their specific pain points (discomfort, weather, carrying gear) and designing a solution to address them.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Market Research & Analysis
+                        <div class="tooltip">
+                            <strong>Market Research & Analysis:</strong> Conducted extensive market research, competitor analysis, and SWOT analysis to identify a viable gap in the £3.3 billion live music event market.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        Brand Strategy & Development
+                        <div class="tooltip">
+                            <strong>Brand Strategy & Development:</strong> Created a full brand identity for "Endless Groove," including a logo, the "Fun for Longer" ethos, and strategic brand partnership concepts with Craghoppers and Beavertown.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Soft Goods & Apparel Design
+                        <div class="tooltip">
+                            <strong>Soft Goods & Apparel Design:</strong> Designed multi-functional apparel with specific material callouts (Gore-Tex, polyester taffeta, ripstop nylon) and considerations for textile manufacturing.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        Prototyping & Sketching
+                        <div class="tooltip">
+                            <strong>Prototyping & Sketching:</strong> The process involved extensive ideation sketching and the creation of physical, functional prototypes to test the bag-to-coat and strap-to-seat conversion mechanisms.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Financial Forecasting & BOM
+                        <div class="tooltip">
+                            <strong>Financial Forecasting & Bill of Materials:</strong> Developed a detailed financial forecast, including stock costs, cash margins, and break-even analysis, supported by a full Bill of Materials (BOM) for production.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Go-to-Market Strategy
+                        <div class="tooltip">
+                            <strong>Go-to-Market Strategy:</strong> Outlined a comprehensive launch plan including point-of-sale (POS) displays for target retailers, social media campaigns, and intellectual property considerations.
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h3>Key Challenges & Process</h3>
+            <p><strong>Problem Identification:</strong> The project began with a core insight: festivals are incredible experiences often hampered by physical discomfort. Attendees are burdened with carrying separate items for rain, seating, and storage, leading to a clunky and inconvenient experience. The market was polarized between cheap, disposable ponchos and expensive, single-purpose camping gear.</p>
+            
+            <p><strong>A Holistic Solution:</strong> The solution was "Endless Groove," a single, convertible product designed to be the ultimate festival companion. The design process was meticulously documented, from initial ideation sketches and user journey maps to physical prototyping that validated the transformation mechanics. The innovative "swing to sit" inflation method for the seat and the reversible bag-to-coat function were central to the design.</p>
+            
+            <p><strong>From Concept to Business Case:</strong> This project went far beyond a simple product concept. It was developed into a full business proposal, complete with a robust brand identity, target demographic profiles, and a clear go-to-market strategy. This included designing POS displays, planning social media collaborations, and producing detailed financial forecasts and a Bill of Materials to prove commercial viability. The proposed partnership with a brand like Craghoppers demonstrates strategic thinking to tap into existing markets while introducing a new, younger demographic.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Design Rationale</h3>
+            <p>Endless Groove is designed not just as a product, but as an experience-enhancer. It directly embodies its ethos of "Fun for Longer" by removing the common discomforts that can cut a festival day short. By integrating multiple functions into one stylish and reusable item, it offers a sustainable and desirable alternative to disposable gear. The project's strength lies in its comprehensive, business-minded approach, proving that a creative, user-centric idea can be supported by rigorous research, strategic branding, and a viable financial plan.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Team & Collaborators</h3>
+            <p>This project was developed through collaborative effort, bringing together diverse expertise and perspectives. Special thanks to everyone who contributed their time, insights, and expertise to make Endless Groove a reality.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Jacob Fletcher</h4>
+                    <p class="role">Lead Designer & Project Manager</p>
+                    <a href="https://linkedin.com/in/jacob-fletcher" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <!-- Add more team members here -->
+                <div class="team-member">
+                    <h4>Team Member Name</h4>
+                    <p class="role">Role/Contribution</p>
+                    <a href="https://linkedin.com/in/team-member-profile" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
