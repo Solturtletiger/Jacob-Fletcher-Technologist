@@ -20,6 +20,16 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #1a1a1a; /* Dark background */
             color: #ffffff;
+            /* Mobile scrolling fixes */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative; /* Establish stacking context */
+        }
+
+        /* Ensure smooth scrolling on all devices */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* 
@@ -64,15 +74,20 @@
             width: 100%;
             background: rgba(26, 26, 26, 0.95); /* Dark background with transparency */
             backdrop-filter: blur(10px); /* Blur effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
             z-index: 1000;
             padding: 1rem 0 1rem 3rem; /* No padding on left, keep right padding */
             transform: translateY(-100%); /* Hidden by default */
             transition: transform 0.3s ease-in-out;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            /* Mobile touch improvements */
+            -webkit-transform: translateY(-100%);
+            -webkit-transition: -webkit-transform 0.3s ease-in-out;
         }
 
         .scroll-nav.visible {
             transform: translateY(0); /* Show when visible */
+            -webkit-transform: translateY(0);
         }
 
         .scroll-nav-content {
@@ -156,6 +171,9 @@
             overflow: hidden; /* Hides parts of the image that zoom out */
             border-radius: 8px; /* Slightly rounded corners */
             aspect-ratio: 3 / 4; /* Gives each card a consistent shape (width / height) */
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+            touch-action: manipulation; /* Optimize touch interactions */
         }
 
         .project-item img {
@@ -163,10 +181,24 @@
             height: 100%;
             object-fit: cover; /* Prevents image from stretching */
             transition: transform 0.4s ease-in-out; /* Smooth zoom effect */
+            -webkit-transition: -webkit-transform 0.4s ease-in-out; /* Safari support */
+            /* Mobile touch improvements */
+            -webkit-user-select: none; /* Prevent text selection on mobile */
+            user-select: none;
+            pointer-events: none; /* Prevent image drag on mobile */
         }
 
         .project-item:hover img {
             transform: scale(1.05); /* Zoom in the image slightly on hover */
+            -webkit-transform: scale(1.05);
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .project-item:active img {
+                transform: scale(1.02);
+                -webkit-transform: scale(1.02);
+            }
         }
 
         .project-info {
@@ -188,10 +220,22 @@
             
             opacity: 0; /* Hidden by default */
             transition: opacity 0.4s ease-in-out; /* Smooth fade-in effect */
+            -webkit-transition: opacity 0.4s ease-in-out; /* Safari support */
+            /* Mobile touch improvements */
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none; /* Allow clicks to pass through to parent */
         }
 
         .project-item:hover .project-info {
             opacity: 1; /* Show the overlay on hover */
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .project-item:active .project-info {
+                opacity: 0.8;
+            }
         }
 
         .project-info h2 {
@@ -199,6 +243,7 @@
             margin-bottom: 0.5rem;
             transform: translateY(10px); /* Start slightly lower */
             transition: transform 0.4s ease-in-out;
+            -webkit-transition: -webkit-transform 0.4s ease-in-out;
         }
 
         .project-info p {
@@ -206,12 +251,23 @@
             opacity: 0.9;
             transform: translateY(10px);
             transition: transform 0.4s ease-in-out;
+            -webkit-transition: -webkit-transform 0.4s ease-in-out;
             transition-delay: 0.1s; /* Delay the paragraph slightly */
         }
         
         .project-item:hover h2,
         .project-item:hover p {
             transform: translateY(0); /* Move text into position on hover */
+            -webkit-transform: translateY(0);
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .project-item:active h2,
+            .project-item:active p {
+                transform: translateY(5px);
+                -webkit-transform: translateY(5px);
+            }
         }
 
         /* 
@@ -265,6 +321,9 @@
 
             nav a {
                 font-size: 0.9rem;
+                /* Mobile touch improvements */
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             }
 
             .project-info h2 {
@@ -296,11 +355,26 @@
 
             .scroll-nav-links a {
                 font-size: 0.9rem;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             }
 
             .scroll-nav-contact {
                 font-size: 0.9rem;
                 padding: 0.4rem 0.8rem;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            /* Mobile scrolling optimizations */
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            .project-item {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
             }
         }
         
@@ -325,6 +399,8 @@
 
             nav a {
                 font-size: 0.85rem;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             }
 
             .project-info h2 {
@@ -355,11 +431,31 @@
 
             .scroll-nav-links a {
                 font-size: 0.85rem;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             }
 
             .scroll-nav-contact {
                 font-size: 0.85rem;
                 padding: 0.3rem 0.6rem;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            /* Enhanced mobile scrolling */
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            .project-item {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            /* Prevent zoom on input focus */
+            input, textarea, select {
+                font-size: 16px;
             }
         }
         
