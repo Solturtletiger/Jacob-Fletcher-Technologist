@@ -173,12 +173,51 @@
             color: #ffffff;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
         }
 
         .tech-item:hover {
             background: #505050;
             border-color: #4caf50;
             box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #4caf50 transparent transparent transparent;
+        }
+
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .project-description {
@@ -242,8 +281,8 @@
 
     <main>
         <div class="project-header">
-            <h1 class="project-title">BELL UH-1 IROQUOIS</h1>
-            <p class="project-subtitle">Complex Systems Modelling & Digital Twin Engineering</p>
+            <h1 class="project-title">HUEY UH-1H</h1>
+            <p class="project-subtitle">A Digital Reconstruction</p>
         </div>
 
         <div class="project-embed">
@@ -253,28 +292,74 @@
         <div class="project-details">
             <div class="project-info">
                 <h3>Project Overview</h3>
-                <p>A comprehensive 3D model and digital twin of the iconic Bell UH-1 Iroquois helicopter, focusing on accurate systems modeling and engineering detail. This project demonstrates advanced CAD modeling capabilities and understanding of complex mechanical systems.</p>
+                <p>A high-fidelity digital reconstruction of the iconic Bell UH-1 "Huey" helicopter, created at a 1:1 scale. This project is a deep dive into advanced surface modeling and the digital re-creation of complex mechanical assemblies.</p>
+                
+                <p>The goal was to create a precise and detailed digital twin of the Huey, focusing on both its iconic external form and its intricate mechanical systems. The project demonstrates a mastery of advanced modeling techniques by balancing the helicopter's smooth, aerodynamic fuselage with the hard-surface precision of its engine and rotor components.</p>
             </div>
 
             <div class="tech-stack">
-                <h3>Technologies Used</h3>
+                <h3>Technologies & Skills</h3>
                 <div class="tech-list">
-                    <span class="tech-item">SolidWorks</span>
-                    <span class="tech-item">AutoCAD</span>
-                    <span class="tech-item">KeyShot</span>
-                    <span class="tech-item">3D Modeling</span>
-                    <span class="tech-item">Systems Engineering</span>
+                    <span class="tech-item">
+                        Rhinoceros 7
+                        <div class="tooltip">
+                            <strong>Rhinoceros 7</strong><br>
+                            Used for advanced SubD and NURBS modeling to create the high-fidelity digital reconstruction, with precise topological control for both smooth fuselage surfaces and complex mechanical assemblies.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        KeyShot
+                        <div class="tooltip">
+                            <strong>KeyShot</strong><br>
+                            Used to create high-quality visualizations showcasing the detailed mechanical assemblies and aerodynamic form of the helicopter model.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        High-Poly Hard-Surface Modeling
+                        <div class="tooltip">
+                            <strong>High-Poly Hard-Surface Modeling</strong><br>
+                            Applied advanced techniques to model complex mechanical assemblies like the main rotor system, from mast and swashplate down to individual pitch control links.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Blueprint-Based Reconstruction
+                        <div class="tooltip">
+                            <strong>Blueprint-Based Reconstruction</strong><br>
+                            Used historical blueprints to ensure dimensional accuracy and authentic recreation of the iconic helicopter's form and mechanical systems.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Complex Mechanical Assembly
+                        <div class="tooltip">
+                            <strong>Complex Mechanical Assembly</strong><br>
+                            Demonstrated ability to handle highly complex, interlocking parts and systems while maintaining precise dimensional relationships.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Problem-Solving
+                        <div class="tooltip">
+                            <strong>Problem-Solving</strong><br>
+                            Overcame technical challenges including file corruption recovery by integrating components from earlier versions, demonstrating robust workflow management.
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="project-description">
-            <h3>Project Details</h3>
-            <p>The Bell UH-1 Iroquois, commonly known as the "Huey," is one of the most recognizable helicopters in aviation history. This project involved creating a detailed digital twin that captures both the external aesthetics and internal mechanical systems of this legendary aircraft.</p>
+            <h3>Key Challenges & Process</h3>
+            <p>This model was meticulously built from the ground up in Rhinoceros 7, using historical blueprints to ensure dimensional accuracy.</p>
             
-            <p>The modeling process required extensive research into the helicopter's engineering specifications, including rotor dynamics, transmission systems, and airframe construction. Special attention was paid to maintaining historical accuracy while demonstrating modern CAD modeling techniques.</p>
+            <p><strong>Advanced SubD Modeling:</strong> The main fuselage was sculpted using Rhino's SubD tools, allowing for the creation of clean, flowing surfaces with precise topological control.</p>
             
-            <p>This project showcases skills in complex systems modeling, attention to detail, and the ability to work with intricate mechanical assemblies. The final model serves as both a technical demonstration and a tribute to this iconic piece of aviation history.</p>
+            <p><strong>Mechanical Assembly:</strong> The greatest challenge was modeling the entire main rotor assembly, from the mast and swashplate down to the individual pitch control links, showcasing an ability to handle highly complex, interlocking parts.</p>
+            
+            <p><strong>Resilience & Problem-Solving:</strong> The process involved overcoming technical challenges, including recovering the model from a critical file corruption by integrating components from earlier versions, demonstrating perseverance and robust workflow management.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Design Rationale</h3>
+            <p>This project is a testament to patience, precision, and the ability to deconstruct and digitally replicate a complex piece of engineering with an exceptional level of detail.</p>
         </div>
     </main>
 </body>

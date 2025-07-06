@@ -170,12 +170,51 @@
             color: #ffffff;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
         }
 
         .tech-item:hover {
             background: #505050;
             border-color: #E50914;
             box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #E50914 transparent transparent transparent;
+        }
+
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .project-description {
@@ -239,8 +278,8 @@
 
     <main>
         <div class="project-header">
-            <h1 class="project-title">BLUETOOTH NETFLIX SPEAKER</h1>
-            <p class="project-subtitle">Product Design & Brand-Driven Aesthetics</p>
+            <h1 class="project-title">NETFLIX SPEAKER</h1>
+            <p class="project-subtitle">Translating a Digital Brand into Physical Form</p>
         </div>
 
         <div class="project-embed">
@@ -249,29 +288,70 @@
 
         <div class="project-details">
             <div class="project-info">
-                <h3>Project Overview</h3>
-                <p>A retro-inspired Bluetooth speaker design that combines nostalgic aesthetics with modern technology. This project explores brand identity integration while maintaining functional excellence in consumer electronics design.</p>
+                <h3>Project Overview & Process</h3>
+                <p>This project is a case study in brand translation, exploring how the core identity of a digital-first company like Netflix can be embodied in a physical consumer electronics product. The result is a sophisticated Bluetooth speaker concept designed to be a "cinematic" centerpiece for the modern home.</p>
+                
+                <p>The design process was rooted in a deep, analytical approach to brand identity. It began with extensive research into Netflix's brand values, visual language, and competitive landscape, which was distilled into a "Word Compass" of Entertaining, Innovative, and Diverse.</p>
+                
+                <p>This strategic foundation directly inspired every aspect of the speaker's form: the cinematic front curve and 16:9 aspect ratio are direct references to the cinematic screen, creating a form that invites the user to "lose themselves in the curve."</p>
             </div>
 
             <div class="tech-stack">
-                <h3>Technologies Used</h3>
+                <h3>Technologies & Skills</h3>
                 <div class="tech-list">
-                    <span class="tech-item">Fusion 360</span>
-                    <span class="tech-item">KeyShot</span>
-                    <span class="tech-item">Photoshop</span>
-                    <span class="tech-item">Product Design</span>
-                    <span class="tech-item">Brand Integration</span>
+                    <span class="tech-item">
+                        Rhinoceros 7
+                        <div class="tooltip">
+                            <strong>Rhinoceros 7</strong><br>
+                            Used for precise 3D modeling of the speaker's cinematic form, creating the signature front curve and complex surface geometry that embodies the Netflix brand aesthetic.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        KeyShot
+                        <div class="tooltip">
+                            <strong>KeyShot</strong><br>
+                            Used to create high-quality visualizations showcasing the sophisticated design, Netflix brand integration, and subtle LED lighting effects for presentation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Adobe Photoshop
+                        <div class="tooltip">
+                            <strong>Adobe Photoshop</strong><br>
+                            Used for post-processing renders, creating compelling brand integration visuals, and developing the CMF (Color, Material, Finish) strategy presentation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Brand Language Analysis
+                        <div class="tooltip">
+                            <strong>Brand Language Analysis</strong><br>
+                            Conducted deep research into Netflix's brand values, visual language, and competitive landscape to create the "Word Compass" foundation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        UX Storyboarding
+                        <div class="tooltip">
+                            <strong>UX Storyboarding</strong><br>
+                            Developed detailed storyboards for the unboxing and setup experience, focusing on the complete user journey beyond just aesthetics.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        CMF Strategy
+                        <div class="tooltip">
+                            <strong>CMF Strategy</strong><br>
+                            Carefully considered Color, Material, and Finish strategy including the integration of the iconic Netflix "N" and subtle LED lighting for volume and power indication.
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="project-description">
             <h3>Project Details</h3>
-            <p>This Bluetooth speaker design merges the iconic Netflix brand aesthetic with retro consumer electronics styling. The project challenged me to create a product that would appeal to streaming enthusiasts while maintaining high-quality audio performance and modern connectivity features.</p>
+            <p>Beyond aesthetics, the project focused on the complete user journey. A storyboard was developed for the unboxing and setup experience, while the physical interface was refined through detailed studies of button hierarchy and ergonomics.</p>
             
-            <p>The design process involved extensive research into both vintage speaker aesthetics and contemporary audio technology. The final form factor balances portability with acoustic performance, featuring carefully designed speaker grilles and intuitive control interfaces.</p>
+            <p>The design was built up methodically, from its primitive form to final details, including the integration of the iconic Netflix "N," subtle LED lighting to indicate volume and power, and a carefully considered CMF (Color, Material, Finish) strategy.</p>
             
-            <p>Special attention was paid to brand integration, incorporating Netflix's signature red color scheme and typography in a way that feels authentic to the brand while creating a desirable consumer product. The speaker includes features like voice assistant integration, multi-device pairing, and streaming service connectivity.</p>
+            <p>This project showcases a holistic design process, moving from abstract brand strategy and user-centric thinking to meticulous 3D modeling and high-quality visual execution. It demonstrates the ability to translate complex brand identities into compelling physical products that resonate with users on multiple levels.</p>
         </div>
     </main>
 </body>

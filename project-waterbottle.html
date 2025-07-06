@@ -170,12 +170,51 @@
             color: #ffffff;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
         }
 
         .tech-item:hover {
             background: #505050;
             border-color: #084cac;
             box-shadow: 0 0 15px rgba(8, 76, 172, 0.3);
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #084cac transparent transparent transparent;
+        }
+
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .project-description {
@@ -239,8 +278,8 @@
 
     <main>
         <div class="project-header">
-            <h1 class="project-title">WATER BOTTLE</h1>
-            <p class="project-subtitle">Ergonomic Design & Form Development</p>
+            <h1 class="project-title">THE COMPASS BOTTLE</h1>
+            <p class="project-subtitle">A Sculptural Water Bottle</p>
         </div>
 
         <div class="project-embed">
@@ -250,28 +289,76 @@
         <div class="project-details">
             <div class="project-info">
                 <h3>Project Overview</h3>
-                <p>An ergonomic water bottle design that prioritizes user comfort and functionality. This project explores human-centered design principles while addressing sustainability and manufacturing considerations in consumer product development.</p>
+                <p>This project is an exploration of form and emotion, resulting in an ergonomic water bottle designed for the mindful explorer. It moves beyond simple utility to become an inspirational companion for woodland walks and daily journeys.</p>
+                
+                <p>Guided by a conceptual "word compass" of Happy, Inspirational, and Balance, the design process focused on translating these feelings into a physical form. The bottle is crafted for a specific user—a tall individual seeking a comfortable, secure, and beautiful hydration solution for hiking. Its unique, sculptural shape is designed to rest snugly against the user's leg and hip, while the integrated buckle allows for easy belt attachment.</p>
+                
+                <p>The final design is a harmonious blend of materials and function, featuring a translucent glass body, a warm mahogany wood grip, and a hinged, magnetic cap for secure, one-handed operation.</p>
             </div>
 
             <div class="tech-stack">
                 <h3>Technologies Used</h3>
                 <div class="tech-list">
-                    <span class="tech-item">SolidWorks</span>
-                    <span class="tech-item">KeyShot</span>
-                    <span class="tech-item">Ergonomic Analysis</span>
-                    <span class="tech-item">User Research</span>
-                    <span class="tech-item">Material Selection</span>
+                    <span class="tech-item">
+                        Rhinoceros 7
+                        <div class="tooltip">
+                            <strong>Rhinoceros 7</strong><br>
+                            Used for advanced free-form modeling to translate the abstract "squiggly line" concept into a complex, sculptural 3D form with precise surface geometry.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        KeyShot
+                        <div class="tooltip">
+                            <strong>KeyShot</strong><br>
+                            Used to create photorealistic renderings showcasing the translucent glass body, warm mahogany wood grip, and magnetic cap details for presentation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        AI Material Inspiration
+                        <div class="tooltip">
+                            <strong>AI Material Inspiration</strong><br>
+                            Used AI tools to generate hundreds of different material variations and finishes, exploring innovative textures and visual effects for the bottle design.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Clay Modeling
+                        <div class="tooltip">
+                            <strong>Clay Modeling</strong><br>
+                            Used for hands-on exploration of the "squiggly line" concept, transitioning from 2D sketches to tangible 3D forms for iterative refinement.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Ergonomic Analysis
+                        <div class="tooltip">
+                            <strong>Ergonomic Analysis</strong><br>
+                            Applied analysis to ensure the bottle rests snugly against the user's leg and hip, with comfortable grip zones and one-handed operation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Persona-Based Design
+                        <div class="tooltip">
+                            <strong>Persona-Based Design</strong><br>
+                            Designed for a specific user—a tall individual seeking a comfortable, secure hydration solution for hiking with integrated belt attachment.
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="project-description">
-            <h3>Project Details</h3>
-            <p>This water bottle design project began with extensive user research to identify pain points in existing hydration products. The focus was on creating a bottle that would be comfortable to hold for extended periods while maintaining optimal functionality and aesthetic appeal.</p>
+            <h3>Key Features & Design Process</h3>
+            <p>The final form was the result of a rigorous, iterative design journey documented in a comprehensive process book.</p>
             
-            <p>The ergonomic form features carefully considered grip zones, balanced weight distribution, and a cap design that facilitates one-handed operation. Material selection prioritized both durability and sustainability, with consideration for recyclability and long-term use patterns.</p>
+            <p><strong>From 2D to 3D:</strong> The core "squiggly line" concept was evolved through sketches, clay modeling, and advanced 3D modeling in Rhinoceros 7.</p>
             
-            <p>The design process included iterative prototyping, user testing, and refinement based on feedback. Special attention was paid to manufacturing feasibility, ensuring the design could be produced efficiently while maintaining quality standards. The final design represents a balance of form, function, and environmental responsibility.</p>
+            <p><strong>Iterative Refinement:</strong> The design went through four major versions, with each iteration solving specific problems identified during self-testing—improving the grip, adjusting the size, refining the hinge, and ensuring stability.</p>
+            
+            <p><strong>Functional Details:</strong> The design incorporates a water-level viewing window, filleted edges for safety, and precisely engineered components like the magnetic "snap" closure to provide tactile and audible confirmation that the bottle is sealed.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Design Rationale</h3>
+            <p>This project was a significant milestone in applying advanced free-form modeling techniques to translate an abstract emotional concept into a functional, highly-detailed product. It showcases a deep process of ideation, critical analysis, and iterative refinement.</p>
         </div>
     </main>
 </body>
