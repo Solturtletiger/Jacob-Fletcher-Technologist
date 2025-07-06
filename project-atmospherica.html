@@ -248,27 +248,28 @@
         /* Mobile tooltip positioning */
         @media (max-width: 768px) {
             .tech-item .tooltip {
-                bottom: auto;
-                top: 125%;
-                left: 0;
-                right: 0;
-                transform: none;
-                -webkit-transform: none;
-                width: auto;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .tech-item .tooltip::after {
+                position: fixed;
+                left: 50%;
+                bottom: 24px;
                 top: auto;
-                bottom: 100%;
-                border-color: transparent transparent #ffffff transparent;
+                right: auto;
+                transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                width: 95vw;
+                max-width: 420px;
+                min-width: 0;
+                margin: 0;
+                z-index: 9999;
+                box-sizing: border-box;
+                pointer-events: auto;
+            }
+            .tech-item .tooltip::after {
+                display: none;
             }
         }
-
         @media (max-width: 480px) {
             .tech-item .tooltip {
-                max-width: 250px;
+                max-width: 98vw;
                 font-size: 0.75rem;
                 padding: 0.8rem;
             }
