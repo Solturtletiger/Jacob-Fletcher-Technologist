@@ -175,10 +175,59 @@
             transition: all 0.3s ease;
         }
 
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
         .tech-item:hover {
             background: #505050;
             border-color: #ff9800;
             box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #ff9800 transparent transparent transparent;
+        }
+
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .project-description {
@@ -242,8 +291,8 @@
 
     <main>
         <div class="project-header">
-            <h1 class="project-title">PARAMETRIC DESIGN BRIDAL MUSHROOM</h1>
-            <p class="project-subtitle">Computational & Generative Design with Rhino Grasshopper</p>
+            <h1 class="project-title">PARAMETRIC DESIGN: GENERATIVE VEIL LAMP</h1>
+            <p class="project-subtitle">A Study in Biomimicry and Algorithmic Problem-Solving with Rhino Grasshopper</p>
         </div>
 
         <div class="project-embed">
@@ -252,30 +301,79 @@
 
         <div class="project-details">
             <div class="project-info">
-                <h3>Project Overview</h3>
-                <p>A collection of parametric designs exploring computational design principles and generative algorithms. This project demonstrates the intersection of mathematics, design, and digital fabrication through complex geometric structures.</p>
+                <h3>Project Brief</h3>
+                <p>This project was a technical exploration into computational design, using generative algorithms to create a complex lamp structure inspired by the organic geometry of the Phallus indusiatus (Veiled Lady) mushroom. The primary objective was to develop a robust Grasshopper script capable of translating a natural form into a manufacturable digital model.</p>
             </div>
 
             <div class="tech-stack">
-                <h3>Technologies Used</h3>
+                <h3>Tools Used</h3>
                 <div class="tech-list">
-                    <span class="tech-item">Rhino 3D</span>
-                    <span class="tech-item">Grasshopper</span>
-                    <span class="tech-item">Python</span>
-                    <span class="tech-item">KeyShot</span>
-                    <span class="tech-item">Parametric Design</span>
-                    <span class="tech-item">Generative Algorithms</span>
+                    <span class="tech-item">
+                        Rhino 3D
+                        <div class="tooltip">
+                            <strong>Rhino 3D</strong><br>
+                            Used as the foundational environment to host the Grasshopper script, manage the final generated model, and prepare the clean geometry for rendering.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Grasshopper
+                        <div class="tooltip">
+                            <strong>Grasshopper</strong><br>
+                            Used to build the entire procedural algorithm from the ground up, generating every part of the lamp's form and allowing for full parametric control over its design.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Weaverbird Plugin
+                        <div class="tooltip">
+                            <strong>Weaverbird Plugin</strong><br>
+                            Applied its components to join, weld, and process the raw data from the Voronoi algorithm, ensuring a clean, manifold mesh ready for the final geometry creation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        KeyShot
+                        <div class="tooltip">
+                            <strong>KeyShot</strong><br>
+                            Used to create the final photorealistic visualizations by applying all materials—specifically the translucent veil and emissive light source—and setting up professional studio lighting.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Voronoi Algorithm
+                        <div class="tooltip">
+                            <strong>Voronoi Algorithm</strong><br>
+                            Applied as a 3D partition to a cloud of points within the veil's volume. This generated the project's core generative element: the complex, organic lattice structure.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Biomimicry
+                        <div class="tooltip">
+                            <strong>Biomimicry</strong><br>
+                            Applied as the core design methodology by analyzing the structure of the Phallus indusiatus mushroom and translating its geometry into a series of computational rules within Grasshopper.
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="project-description">
-            <h3>Project Details</h3>
-            <p>This parametric design project explores the possibilities of computational design through the creation of complex geometric forms. Using Rhino Grasshopper, I developed algorithms that generate organic structures based on mathematical principles and natural patterns.</p>
+            <h3>Methodology & Core Concepts</h3>
+            <p><strong>Biomimicry:</strong> The project began with a detailed analysis of natural structures, deconstructing the mushroom's form into a series of logical components (stem, cap, and veil) that could be defined parametrically.</p>
             
-            <p>The featured lamp design showcases how parametric modeling can create forms that would be impossible to achieve through traditional design methods. The structure is generated through a series of mathematical operations that create both aesthetic beauty and functional lighting distribution.</p>
+            <p><strong>Generative Design:</strong> A Voronoi 3D algorithm was used to generate the intricate, non-uniform lattice of the lamp's veil. This method allows for the creation of lightweight, strong, and aesthetically complex structures that are impossible to model manually.</p>
             
-            <p>This project demonstrates proficiency in computational design thinking, algorithmic problem-solving, and the ability to bridge the gap between digital design and physical fabrication. The parametric approach allows for infinite variations while maintaining design integrity and structural viability.</p>
+            <p><strong>Algorithmic Logic:</strong> The entire model is controlled by a procedural, non-destructive workflow in Grasshopper, allowing for real-time changes to parameters like segment height, profile curvature, and veil density.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Technical Execution & Problem-Solving</h3>
+            <p>The creation of the final form involved a multi-step algorithmic process:</p>
+            
+            <p><strong>Base Form Generation:</strong> The core stem and veil surfaces were created by lofting a series of parametrically-controlled profile curves.</p>
+            
+            <p><strong>Voronoi Application:</strong> A 3D Voronoi pattern was generated within the volume of the veil and intersected with the base mesh to create the raw cellular structure.</p>
+            
+            <p><strong>Data Cleanup (Critical Step):</strong> The initial mesh intersection produced duplicated and messy geometry. A key problem-solving step was implemented to clean this data by identifying nearby points, averaging their positions to create a single vertex, and rebuilding the polyline network. This ensured a clean, manifold topology.</p>
+            
+            <p><strong>Final Geometry:</strong> The cleaned network of curves was converted into a solid, manufacturable part using a MultiPipe function, ready for 3D printing or further analysis.</p>
         </div>
     </main>
 </body>
