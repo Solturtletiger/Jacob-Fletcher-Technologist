@@ -407,28 +407,27 @@
             }
         }
 
-        /* Smart edge tooltip positioning */
+        /* Classic tooltip: always above, centered, never overflows, arrow always visible */
         .tech-item .tooltip {
             left: 50%;
             transform: translateX(-50%);
             max-width: 95vw;
             min-width: 180px;
             box-sizing: border-box;
+            font-size: 1rem;
+            padding: 1.1rem 1.2rem;
         }
-        @media (max-width: 400px) {
+        @media (max-width: 600px) {
             .tech-item .tooltip {
+                font-size: 0.95rem;
+                padding: 0.8rem 0.7rem;
                 min-width: 0;
-                font-size: 0.75rem;
-                padding: 0.8rem;
             }
         }
         /* Prevent overflow: clamp the left position */
         @media (max-width: 1200px) {
             .tech-item .tooltip {
-                left: auto;
-                right: auto;
-                /* 8px from edge, 300px is tooltip width */
-                inset-inline-start: min(max(8px, calc(50% - 150px)), calc(100vw - 300px - 8px));
+                left: clamp(8px, 50%, calc(100vw - 8px - 300px));
                 transform: none;
             }
         }
