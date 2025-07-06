@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Jacob Fletcher - Product Design Portfolio</title>
+    <style>
+        /* 
+        ========================================
+        GENERAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* 
+        ========================================
+        HEADER & NAVIGATION
+        ========================================
+        */
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #cccccc;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* 
+        ========================================
+        MAIN CONTENT
+        ========================================
+        */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 3rem 4rem 3rem;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .about-header p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .about-section ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .about-section li {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-section li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .contact-btn:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* 
+        ========================================
+        ABOUT IMAGES
+        ========================================
+        */
+        .about-images {
+            margin-bottom: 4rem;
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* 
+        ========================================
+        RESPONSIVE DESIGN
+        ========================================
+        */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 2rem;
+            }
+
+            main {
+                padding: 1.5rem 2rem 3rem 2rem;
+            }
+
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-header p {
+                font-size: 1.1rem;
+            }
+
+            .image-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-section {
+                padding: 2rem;
+            }
+
+            .about-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-section p {
+                font-size: 1rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 1rem 1.5rem 2rem 1.5rem;
+            }
+
+            .about-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-header p {
+                font-size: 1rem;
+            }
+
+            .about-section {
+                padding: 1.5rem;
+            }
+
+            .about-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-section p {
+                font-size: 0.95rem;
+            }
+
+            .contact-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Portfolio
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#projects">PROJECTS</a>
+                <a href="index.html#contact">CONTACT</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-header">
+            <h1>About Jacob Fletcher</h1>
+            <p>Product Designer & Engineer passionate about creating innovative solutions that bridge the gap between form and function.</p>
+        </div>
+
+        <div class="about-images">
+            <div class="image-container">
+                <img src="images/CloseUpedit.jpeg" alt="Jacob Fletcher - Close up portrait" class="about-image">
+                <img src="images/Faraway.jpeg" alt="Jacob Fletcher - Full body portrait" class="about-image">
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-section">
+                <h2>Background</h2>
+                <p>I'm a product designer and engineer with a passion for creating innovative solutions that seamlessly blend aesthetics with functionality. My journey in design began with a fascination for how objects interact with users and environments.</p>
+                <p>With expertise in both traditional design principles and cutting-edge technologies, I specialize in developing products that not only look great but also solve real-world problems effectively.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Design Philosophy</h2>
+                <p>I believe that great design should be invisible—it should feel natural and intuitive to use while solving problems elegantly. My approach combines:</p>
+                <ul>
+                    <li>User-centered design thinking</li>
+                    <li>Technical engineering principles</li>
+                    <li>Sustainable and ethical practices</li>
+                    <li>Iterative prototyping and testing</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Design & Engineering</h2>
+                <ul>
+                    <li>3D CAD Modelling & Surfacing: Rhino 3D (inc. Sub-D), SolidWorks</li>
+                    <li>Parametric & Computational Design: Rhino Grasshopper</li>
+                    <li>Photorealistic Rendering: Keyshot, V-Ray</li>
+                    <li>Prototyping & Systems Integration: Arduino, Raspberry Pi, Sensor Integration</li>
+                    <li>Design for Manufacturing (DFM): FDM 3D Printing, CNC, Injection Moulding principles</li>
+                    <li>Adobe Creative Suite: Photoshop, Illustrator, InDesign</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Technical & Software</h2>
+                <ul>
+                    <li>Programming & Data: Python (inc. Pandas, Scikit-learn), AI/Neural Network principles</li>
+                    <li>IT Systems & Networking: Windows/Linux OS, Network Configuration, Server Maintenance</li>
+                    <li>Microsoft Office Suite: Excel (MOS), Word (MOS), PowerPoint</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Professional & Languages</h2>
+                <ul>
+                    <li>Languages: English (Fluent), Spanish (Fluent), Catalan (Fluent), German (Learning)</li>
+                    <li>Core Competencies: Problem-Solving, Systems Thinking, Project Management, Collaboration</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Experience</h2>
+                <p>I've worked on a diverse range of projects, from complex systems modeling to consumer product design. My experience includes:</p>
+                <ul>
+                    <li>Complex systems modeling and digital twin engineering</li>
+                    <li>Product design with brand-driven aesthetics</li>
+                    <li>Computational and generative design</li>
+                    <li>Ergonomic design and form development</li>
+                    <li>Functional prototyping and testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Let's Collaborate</h2>
+            <p>I'm always interested in new opportunities and exciting projects. Whether you have a question about my work or want to discuss a potential collaboration, I'd love to hear from you.</p>
+            <div class="contact-buttons">
+                <a href="mailto:jacob.fletcher@example.com" class="contact-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Email Me
+                </a>
+                <a href="https://linkedin.com/in/jacob-fletcher" target="_blank" class="contact-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
