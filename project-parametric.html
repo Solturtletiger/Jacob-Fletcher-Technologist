@@ -92,6 +92,10 @@
             font-weight: 300;
             margin-bottom: 1rem;
             letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .project-subtitle {
@@ -128,6 +132,7 @@
             background: #2a2a2a;
             padding: 2rem;
             border-radius: 12px;
+            border-left: 4px solid #ff9800;
         }
 
         .project-info h3 {
@@ -145,6 +150,7 @@
             background: #2a2a2a;
             padding: 2rem;
             border-radius: 12px;
+            border-left: 4px solid #ff9800;
         }
 
         .tech-stack h3 {
@@ -165,6 +171,14 @@
             border-radius: 20px;
             font-size: 0.9rem;
             color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            background: #505050;
+            border-color: #ff9800;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
         }
 
         .project-description {
@@ -172,6 +186,7 @@
             padding: 2rem;
             border-radius: 12px;
             margin-bottom: 3rem;
+            border-left: 4px solid #ff9800;
         }
 
         .project-description h3 {

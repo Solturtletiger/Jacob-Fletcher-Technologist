@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmospherica - Jacob Fletcher</title>
+    <style>
+        /* 
+        ========================================
+        GENERAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* 
+        ========================================
+        HEADER & NAVIGATION
+        ========================================
+        */
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #cccccc;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #cccccc;
+        }
+
+        /* 
+        ========================================
+        PROJECT CONTENT
+        ========================================
+        */
+        main {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #64b5f6, #42a5f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .project-embed {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            display: block;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 3rem;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-info {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #64b5f6;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-info p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #64b5f6;
+        }
+
+        .tech-stack h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            background: #505050;
+            border-color: #64b5f6;
+            box-shadow: 0 0 15px rgba(100, 181, 246, 0.3);
+        }
+
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2a2a2a transparent transparent transparent;
+        }
+
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .project-description {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #64b5f6;
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-description p {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 
+        ========================================
+        MOBILE RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-info,
+            .tech-stack,
+            .project-description {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <a href="#contact" class="contact-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">ATMOSPHERICA</h1>
+            <p class="project-subtitle">Where Science Meets Art — An Environmental Simulator & Cloud Formation System</p>
+        </div>
+
+        <div class="project-embed">
+            <iframe width="100%" height="800" style="border: none; margin: 0; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);" src="https://www.canva.com/design/DAGmYmiAJh4/BL9j2TuHPksrfzEGvEky4g/view?embed" allowfullscreen="allowfullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview</h3>
+                <p>Atmospherica is a desktop device that brings the wonder of atmospheric science into the user's space by creating a real, visible cloud in a sealed glass container. Merging scientific principles with elegant design, it serves as both an interactive art piece and an engaging educational tool, transforming a complex natural phenomenon into a tangible, captivating experience.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <iframe width="100%" height="400" style="border: none; margin: 0; border-radius: 8px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);" src="https://www.youtube.com/embed/O1s2XRn_p_Q" title="Atmospherica Demo" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technologies & Tools</h3>
+                <div class="tech-list">
+                    <span class="tech-item">Arduino
+                        <span class="tooltip">To serve as the brain of the prototype, controlling all sensors and actuators to manage the delicate balance of temperature and humidity needed for cloud formation.</span>
+                    </span>
+                    <span class="tech-item">Custom PCB
+                        <span class="tooltip">To transition from a messy breadboard to a compact and reliable final product, integrating all electronic components onto a professional, purpose-built circuit board.</span>
+                    </span>
+                    <span class="tech-item">Peltier Coolers
+                        <span class="tooltip">As the core cooling technology. I engineered a stacked configuration to achieve the sub-zero temperatures necessary for rapid and visible cloud condensation.</span>
+                    </span>
+                    <span class="tech-item">Rhino 8
+                        <span class="tooltip">For precise 3D modeling of all custom parts, ensuring a perfect fit and tolerance between the housing, internal components, and the glass container for a leak-proof assembly.</span>
+                    </span>
+                    <span class="tech-item">Keyshot
+                        <span class="tooltip">To create photorealistic product visuals for marketing, concept validation, and the final business proposal, effectively communicating the product's aesthetic and value.</span>
+                    </span>
+                    <span class="tech-item">NumPy
+                        <span class="tooltip">To power the physics simulation, performing high-speed numerical calculations for particle thermodynamics and kinematics, which was essential for accurately modeling the cloud formation process.</span>
+                    </span>
+                    <span class="tech-item">Matplotlib
+                        <span class="tooltip">To visualize the Python simulation data, creating dynamic 2D and 3D plots that clearly demonstrated the formation of the 'cloud zone' over time, validating the scientific concept before the physical build.</span>
+                    </span>
+                    <span class="tech-item">Adobe Photoshop
+                        <span class="tooltip">For post-processing renders to enhance realism, creating compelling composite images to visualize the cloud effect, and designing all presentation graphics to communicate the project professionally.</span>
+                    </span>
+                    <span class="tech-item">DALL-E
+                        <span class="tooltip">As a rapid ideation tool, generating a wide range of visual concepts for the product's form and lighting effects, which significantly accelerated the early-stage creative exploration.</span>
+                    </span>
+                    <span class="tech-item">Gemini
+                        <span class="tooltip">As a research and analysis assistant, helping to process scientific papers to refine the simulation's accuracy and to analyze user questionnaire data, providing key insights that shaped the final design.</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+        <div class="project-description">
+            <h3>My Role & Key Responsibilities</h3>
+            <p>As the sole creator, I was responsible for the entire project lifecycle, from initial concept to a market-ready business plan. My key roles included:</p>
+            
+            <p><strong>Product Design & Strategy:</strong> Led research, defined the user experience, and developed the core product concept.</p>
+            
+            <p><strong>Hardware Prototyping & Engineering:</strong> Sourced components, designed custom parts, and built a fully functional prototype that solved key thermal and mechanical challenges.</p>
+            
+            <p><strong>UI/UX Design:</strong> Designed the physical interface, including the rotary dial controls and the custom pixel-art LCD screen layout.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>The Process & Solution</h3>
+            <p>The goal was to engineer a device that was both scientifically accurate and aesthetically beautiful.</p>
+            
+            <p><strong>Research-Driven Ideation:</strong> The process began with user questionnaires and AI-assisted concept generation (DALL-E) to define the product's form and function.</p>
+            
+            <p><strong>Rapid Prototyping & Problem-Solving:</strong> I engineered a functional prototype using stacked Peltier coolers to achieve sub-zero temperatures, a critical requirement for cloud formation. Custom parts were designed in Rhino 8 and validated with multiple 3D-printed iterations to ensure a perfect, leak-proof assembly.</p>
+            
+            <p><strong>Refined Design & User Interface:</strong> The final design features an elegant wood veneer housing and a custom-cut glass container. An intuitive UI with a rotary dial and LCD screen provides simple control over lighting, humidity, and atmospheric effects like "Golden Hour" or "Storm" modes.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Technologies & Tools</h3>
+            <p><strong>Hardware:</strong> Arduino, Custom PCB, Peltier Coolers, Ultrasonic Humidifier, LCD Screen</p>
+            <p><strong>Software:</strong> Rhino 8 (3D Modeling), Keyshot (Rendering), Python (Simulation), Adobe Photoshop</p>
+            <p><strong>AI Tools:</strong> DALL-E & Gemini (Concept Ideation & Visualization)</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Outcome</h3>
+            <p>The project culminated in a fully-realized, functional prototype and a comprehensive go-to-market strategy. This included a detailed Bill of Materials (BOM), manufacturing cost analysis, and a retail partnership proposal for the MoMA Design Store, demonstrating a clear path from concept to commercial viability.</p>
+        </div>
+    </main>
+</body>
+</html> 
