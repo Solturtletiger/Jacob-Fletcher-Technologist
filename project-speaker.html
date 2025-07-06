@@ -247,6 +247,35 @@
             border-color: #E50914 transparent transparent transparent;
         }
 
+        /* Mobile tooltip positioning */
+        @media (max-width: 768px) {
+            .tech-item .tooltip {
+                bottom: auto;
+                top: 125%;
+                left: 0;
+                right: 0;
+                transform: none;
+                -webkit-transform: none;
+                width: auto;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .tech-item .tooltip::after {
+                top: auto;
+                bottom: 100%;
+                border-color: transparent transparent #E50914 transparent;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-item .tooltip {
+                max-width: 250px;
+                font-size: 0.75rem;
+                padding: 0.8rem;
+            }
+        }
+
         .tech-item:hover .tooltip {
             visibility: visible;
             opacity: 1;
