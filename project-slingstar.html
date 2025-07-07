@@ -302,6 +302,72 @@
                 font-size: 1.6rem;
             }
         }
+
+        /* --- Meet the Team Section Styles (from Endless Groove) --- */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .team-member {
+            background: #232323;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 180px;
+            max-width: 220px;
+            flex: 1 1 180px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .team-member:hover {
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.18), 0 2px 8px rgba(0,0,0,0.12);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .team-member h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.15rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        .team-member .role {
+            font-size: 0.95rem;
+            color: #bdbdbd;
+            margin-bottom: 0.7rem;
+        }
+        .linkedin-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #4caf50;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .linkedin-link:hover {
+            color: #81c784;
+        }
+        .linkedin-link svg {
+            vertical-align: middle;
+            fill: currentColor;
+        }
+        @media (max-width: 768px) {
+            .team-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .team-member {
+                max-width: 100%;
+                width: 100%;
+                padding: 1.2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -401,6 +467,58 @@
             <h3 style="margin-top:2rem;">Final Design & Project Rationale</h3>
             <p>The final Reforester Slingstar design is a synthesis of the lessons learned throughout the iterative development process. It consists of a fully-realized CAD model featuring a robust, fully enclosed housing that secures all mechanical components, preventing the instability observed in earlier prototypes.</p>
             <p>The project successfully demonstrates the application of engineering principles to develop a novel solution for a real-world environmental challenge. The rigorous process of prototyping, testing, analyzing failure, and implementing data-driven improvements showcases a comprehensive understanding of the mechanical design lifecycle. The resulting concept is a highly functional, ergonomic, and manufacturable device for accessible reforestation.</p>
+            <h3>Meet the Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Sam Watson</h4>
+                    <div style="display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap;">
+                        <a href="https://www.linkedin.com/in/s4mw4tson/" target="_blank" class="linkedin-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/s4m_watson?igsh=MWwwMWlmc3oweDYyaA==" target="_blank" class="linkedin-link" title="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <h4>Ryan Liau</h4>
+                    <a href="https://www.behance.net/ryanliauzicheng" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        Behance
+                    </a>
+                </div>
+                <div class="team-member">
+                    <h4>Jacob Fletcher</h4>
+                    <a href="about.html" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <circle cx="12" cy="8" r="1"/>
+                        </svg>
+                        About Me
+                    </a>
+                    <a href="https://linkedin.com/in/jacob-fletcher" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
 
