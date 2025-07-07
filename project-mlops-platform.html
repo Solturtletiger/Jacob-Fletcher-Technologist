@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential MLOps Platform - Jacob Fletcher</title>
+    <style>
+        /* Using the same styles as your main portfolio for consistency */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        main {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .back-link, .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link::before { content: "← "; }
+        .project-header { text-align: center; margin-bottom: 3rem; }
+        .project-title { font-size: 3rem; font-weight: 300; background: linear-gradient(135deg, #4FC3F7, #29B6F6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .project-subtitle { font-size: 1.2rem; color: #cccccc; margin-bottom: 2rem; }
+        .project-image { width: 100%; max-width: 800px; height: auto; border-radius: 12px; margin: 0 auto 3rem; display: block; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        .project-details { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .project-info, .tech-stack { background: #2a2a2a; padding: 2rem; border-radius: 12px; border-left: 4px solid #4FC3F7; }
+        .project-info h3, .tech-stack h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .project-info p, .project-description p { color: #cccccc; line-height: 1.8; }
+        .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-item { background: #404040; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+        .project-description { background: #2a2a2a; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; border-left: 4px solid #4FC3F7; }
+        .project-description h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .nda-note { 
+            background-color: #2c2222; 
+            border-left: 4px solid #c83e3e; 
+            padding: 1rem 1.5rem; 
+            margin-bottom: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 0 20px rgba(200, 62, 62, 0.3), 0 0 40px rgba(200, 62, 62, 0.1);
+            animation: ndaGlow 2s ease-in-out infinite alternate;
+        }
+        .nda-note p { color: #f0c9c9; }
+        
+        @keyframes ndaGlow {
+            from {
+                box-shadow: 0 0 20px rgba(200, 62, 62, 0.3), 0 0 40px rgba(200, 62, 62, 0.1);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(200, 62, 62, 0.5), 0 0 60px rgba(200, 62, 62, 0.2);
+            }
+        }
+        @media (max-width: 768px) { .project-details { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <!-- Your nav links -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">Confidential MLOps Platform</h1>
+            <p class="project-subtitle">A Scalable System for Complex Pattern Recognition & Automated Response</p>
+        </div>
+        
+
+        
+        <div class="nda-note">
+            <p><strong>Note on Confidentiality:</strong> This project is under a strict Non-Disclosure Agreement (NDA). All proprietary names, specific metrics, and the application domain have been redacted. The following description focuses on the technical architecture, design patterns, and transferable skills demonstrated during its development.</p>
+        </div>
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview</h3>
+                <p>This project involved the architectural design and implementation of a proprietary MLOps platform engineered to process high-volume, time-dependent data streams. The system automates the entire machine learning pipeline, from data ingestion and model training to historical simulation and real-time inference.</p>
+                <p>The core objective was to build a robust and scalable framework for developing, validating, and deploying complex predictive models that can trigger automated actions within a dynamic environment. The architecture is highly modular, enabling rapid experimentation and iteration.</p>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Key Skills & Technologies</h3>
+                <div class="tech-list">
+                    <span class="tech-item">Python 3</span>
+                    <span class="tech-item">End-to-End System Architecture</span>
+                    <span class="tech-item">MLOps Pipeline Design</span>
+                    <span class="tech-item">Custom Neural Network Design</span>
+                    <span class="tech-item">Sequential Data Modeling</span>
+                    <span class="tech-item">Automated Simulation Engines</span>
+                    <span class="tech-item">Real-Time Inference Systems</span>
+                    <span class="tech-item">Third-Party API Integration</span>
+                    <span class="tech-item">System Stability & Guardrails</span>
+                    <span class="tech-item">Modular Software Design</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h3>Key Features & Architecture</h3>
+            <p>The platform was designed with a focus on modularity and scalability, allowing for components to be developed and tested in isolation before integration.</p>
+            
+            <p><strong>Advanced Machine Learning Core:</strong> The system is powered by custom-built neural networks employing multi-scale attention and meta-learning principles. This allows the models to effectively identify complex patterns and adapt to evolving data characteristics. The models were optimized for memory-efficient computation on specialized hardware.</p>
+            
+            <p><strong>Historical Simulation Engine:</strong> A sophisticated simulation engine was developed to validate the performance of decision-making models. This engine replays historical data to test model logic under various past conditions and calculates a suite of custom statistical efficacy scores to measure performance.</p>
+
+            <p><strong>Real-Time Inference & Response:</strong> A live inference engine processes incoming data streams, generates predictions from the deployed models, and executes predefined, automated responses. This component is designed for high availability and low latency, and it operates within a framework that enforces operational constraints and system stability.</p>
+            
+            <p><strong>AI-Powered Diagnostics Suite:</strong> To accelerate research and development, an intelligent diagnostics suite analyzes model training behavior. It automatically identifies potential issues like poor convergence or instability and provides data-driven recommendations for hyperparameter adjustments, streamlining the MLOps workflow.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Project Outcome</h3>
+            <p>The final deliverable is a production-grade, extensible framework for developing and deploying sophisticated machine learning models in a live, automated environment. This project showcases the ability to architect and build complex, data-intensive systems from the ground up, covering advanced ML theory, robust software engineering practices, and modern MLOps principles.</p>
+        </div>
+    </main>
+
+</body>
+</html> 
