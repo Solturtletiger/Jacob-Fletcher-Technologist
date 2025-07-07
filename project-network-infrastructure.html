@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Network Infrastructure - Jacob Fletcher</title>
+    <style>
+        /* 
+        ========================================
+        GENERAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            /* Mobile scrolling fixes */
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ensure smooth scrolling on all devices */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 
+        ========================================
+        HEADER & NAVIGATION
+        ========================================
+        */
+        header {
+            padding: 2rem 3rem;
+            width: 100%;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .back-link:hover {
+            color: #cccccc;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .contact-link:hover {
+            color: #cccccc;
+        }
+
+        /* 
+        ========================================
+        PROJECT CONTENT
+        ========================================
+        */
+        main {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .project-embed {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            display: block;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-embed:hover {
+            border-color: #4caf50;
+            transform: scale(1.02);
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 3rem;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-info {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-info p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .tech-stack h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-item {
+            background: #404040;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .tech-item:hover {
+            background: #505050;
+            border-color: #4caf50;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active {
+                background: #505050;
+                border-color: #4caf50;
+                box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+            }
+        }
+
+        /* Tooltip styles */
+        .tech-item .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            -webkit-transition: opacity 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            /* Mobile touch improvements */
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .tech-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1a1a1a transparent transparent transparent;
+        }
+        
+        .tech-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Mobile touch alternative to hover */
+        @media (hover: none) and (pointer: coarse) {
+            .tech-item:active .tooltip {
+                visibility: visible;
+                opacity: 0.9;
+            }
+        }
+
+        .project-description {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #4caf50;
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-description p {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 
+        ========================================
+        MOBILE RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-info,
+            .tech-stack,
+            .project-description {
+                padding: 1.5rem;
+            }
+            
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            .back-link,
+            .contact-link {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            .tech-item {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .tech-item .tooltip {
+                position: fixed; left: 50%; bottom: 24px; top: auto; right: auto;
+                transform: translateX(-50%); width: 95vw; max-width: 420px;
+                z-index: 9999;
+            }
+            .tech-item .tooltip::after { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            main {
+                padding: 1rem;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .project-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="back-link">BACK TO PORTFOLIO</a>
+            <a href="#contact" class="contact-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="project-header">
+            <h1 class="project-title">Enterprise Network Infrastructure & Remote Management</h1>
+            <p class="project-subtitle">A Comprehensive IT Systems Project for Secure and Manageable Network Services</p>
+        </div>
+
+        <!-- NOTE: You can replace this placeholder image with a screenshot of your server desktop, pfSense dashboard, or a network diagram! -->
+        <img src="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?q=80&w=2070&auto=format&fit=crop" alt="Abstract image of network infrastructure and code" class="project-image">
+
+        <div class="project-details">
+            <div class="project-info">
+                <h3>Project Overview</h3>
+                <p>As a core component of my Cicle de Grau Mitjà de Informàtica, this project involved the end-to-end design, implementation, and management of a secure network infrastructure for a simulated small business environment. The goal was to build a robust and scalable network from the ground up, integrating industry-standard hardware and open-source solutions.</p>
+                <p>The system was built around a pfSense firewall for maximum security and control. Core network services including DNS, FTP, and a web server were deployed on a Windows Server. The project culminated in a successful demonstration of secure remote administration using TeamViewer, proving the reliability and accessibility of the entire infrastructure.</p>
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technologies & Skills</h3>
+                <div class="tech-list">
+                    <span class="tech-item">
+                        pfSense
+                        <div class="tooltip">
+                            <strong>pfSense Firewall:</strong> Deployed and configured an open-source pfSense firewall to manage all network traffic, establish security rules, handle NAT, and act as the primary gateway router.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Cisco IOS
+                        <div class="tooltip">
+                            <strong>Cisco IOS:</strong> Configured Cisco routers and switches via the command-line interface (CLI) for efficient data packet management, inter-VLAN routing, and core network infrastructure setup.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Windows Server
+                        <div class="tooltip">
+                            <strong>Windows Server:</strong> Installed and administered a Windows Server instance to host critical network services required for the business environment.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        DNS Management
+                        <div class="tooltip">
+                            <strong>DNS Management:</strong> Set up and managed a DNS server to handle local name resolution, allowing devices to communicate using hostnames instead of IP addresses.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        FTP Server
+                        <div class="tooltip">
+                            <strong>FTP Server:</strong> Implemented a File Transfer Protocol (FTP) server, enabling secure and efficient file sharing across the network.
+                        </div>
+                    </span>
+                     <span class="tech-item">
+                        HTML / Web Server
+                        <div class="tooltip">
+                            <strong>HTML / Web Server:</strong> Deployed a basic web server to host an internal company website, demonstrating the ability to provide web-based services on the network.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Remote Administration
+                        <div class="tooltip">
+                            <strong>Remote Administration (TeamViewer):</strong> Configured secure remote access to the server, allowing for system administration and troubleshooting from any location, as demonstrated in the final presentation.
+                        </div>
+                    </span>
+                    <span class="tech-item">
+                        Network Troubleshooting
+                        <div class="tooltip">
+                            <strong>Network Troubleshooting:</strong> Demonstrated practical problem-solving skills by diagnosing and resolving issues with server configurations and network connectivity to ensure project success.
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h3>Key Challenges & Process</h3>
+            <p><strong>Network Design:</strong> The first phase involved designing the network topology, defining IP address schemes, and planning VLANs to segment traffic for security and performance. This foundational step ensured a logical and scalable network structure.</p>
+            
+            <p><strong>Implementation & Configuration:</strong> The core of the project was the hands-on configuration of the hardware and software. This included installing pfSense from scratch, defining firewall rules to allow legitimate traffic while blocking threats, and configuring Cisco devices for optimal data flow. On the server side, roles for DNS, web (IIS/Apache), and FTP services were installed and configured to be accessible to network clients.</p>
+            
+            <p><strong>Problem-Solving in Action:</strong> The project presented real-world challenges, including troubleshooting the Windows Server instance to ensure stable operation. Overcoming these hurdles required a systematic approach to diagnostics and demonstrated resilience and a practical understanding of system administration.</p>
+
+            <p><strong>Validation:</strong> The final proof of concept was a live demonstration showing a remote connection from a separate laptop to the server via TeamViewer. This single action successfully validated that the firewall rules, network routing, server services, and remote access software were all configured correctly and working in harmony.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Design Rationale</h3>
+            <p>This project is a testament to the practical application of fundamental networking and systems administration principles. It proves an ability to not only understand the theory behind secure networks but to actually build one using a combination of proprietary (Cisco) and open-source (pfSense) technologies. The focus on security, remote manageability, and the deployment of essential business services makes this a direct reflection of the skills required in a modern IT environment.</p>
+        </div>
+    </main>
+</body>
+</html> 

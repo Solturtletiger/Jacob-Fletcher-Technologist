@@ -299,14 +299,13 @@
         */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
         }
 
         .team-member {
             background: #333333;
-            padding: 1.5rem;
+            padding: 0.8rem;
             border-radius: 8px;
             border-left: 3px solid #cb7230;
             transition: all 0.3s ease;
@@ -320,7 +319,7 @@
 
         .team-member h4 {
             color: #ffffff;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
@@ -332,21 +331,40 @@
             font-style: italic;
         }
 
+        .team-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid #cb7230;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .team-photo {
+            transform: scale(1.05);
+            border-color: #e67e22;
+        }
+
         .linkedin-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             color: #cb7230;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
+            padding: 0.3rem 0;
+            border: 1px solid transparent;
+            border-radius: 4px;
         }
 
         .linkedin-link:hover {
             color: #e67e22;
             transform: translateX(3px);
+            border-color: #cb7230;
+            box-shadow: 0 0 10px rgba(203, 114, 48, 0.3);
         }
 
         .linkedin-link svg {
@@ -411,11 +429,19 @@
             
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.8rem;
             }
             
             .team-member {
-                padding: 1rem;
+                padding: 0.8rem;
+            }
+            
+            .team-member h4 {
+                font-size: 0.9rem;
+            }
+            
+            .linkedin-link {
+                font-size: 0.75rem;
             }
         }
 
@@ -537,8 +563,55 @@
             
             <div class="team-grid">
                 <div class="team-member">
+                    <h4>Ben Jones</h4>
+                    <a href="https://www.linkedin.com/in/ben-jones-528a8934a/" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="team-member">
+                    <h4>Sebastian Green</h4>
+                    <a href="https://www.linkedin.com/in/sebastian-green-4b41082bb/" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="team-member">
+                    <h4>Charlie Brogden</h4>
+                    <a href="https://linkedin.com/in/charlie-brogden" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="team-member">
+                    <h4>Joe Westlake</h4>
+                    <a href="https://linkedin.com/in/joe-westlake" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="team-member">
                     <h4>Jacob Fletcher</h4>
-                    <p class="role">Lead Designer & Project Manager</p>
                     <a href="https://linkedin.com/in/jacob-fletcher" target="_blank" class="linkedin-link">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -549,17 +622,13 @@
                     </a>
                 </div>
                 
-                <!-- Add more team members here -->
                 <div class="team-member">
-                    <h4>Team Member Name</h4>
-                    <p class="role">Role/Contribution</p>
-                    <a href="https://linkedin.com/in/team-member-profile" target="_blank" class="linkedin-link">
+                    <h4>Ryan Liau</h4>
+                    <a href="https://www.behance.net/ryanliauzicheng" target="_blank" class="linkedin-link">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                         </svg>
-                        LinkedIn
+                        Behance
                     </a>
                 </div>
             </div>
