@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Bottle Design - Jacob Fletcher</title>
+    <title>Parametric Mouse Design - Jacob Fletcher</title>
     <style>
         /* 
         ========================================
@@ -21,13 +21,11 @@
             background-color: #1a1a1a;
             color: #ffffff;
             line-height: 1.6;
-            /* Mobile scrolling fixes */
             -webkit-overflow-scrolling: touch;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Ensure smooth scrolling on all devices */
         html {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
@@ -50,27 +48,7 @@
             align-items: center;
         }
 
-        .back-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-            /* Mobile touch improvements */
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .back-link:hover {
-            color: #cccccc;
-        }
-
-        .back-link::before {
-            content: "← ";
-            margin-right: 0.5rem;
-        }
-
+        .back-link,
         .contact-link {
             color: #ffffff;
             text-decoration: none;
@@ -78,13 +56,18 @@
             font-size: 1rem;
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
-            /* Mobile touch improvements */
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
 
+        .back-link:hover,
         .contact-link:hover {
             color: #cccccc;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
         }
 
         /* 
@@ -108,12 +91,21 @@
             font-weight: 300;
             margin-bottom: 1rem;
             letter-spacing: 2px;
-            color: #084cac;
+            background: linear-gradient(135deg, #00bcd4, #3f51b5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .project-subtitle {
             font-size: 1.2rem;
             color: #cccccc;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-meta {
+            font-size: 0.95rem;
+            color: #999999;
             margin-bottom: 2rem;
         }
 
@@ -122,16 +114,6 @@
             max-width: 1000px;
             margin: 0 auto 3rem;
             display: block;
-        }
-
-        .project-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 12px;
-            margin: 0 auto 3rem;
-            display: block;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .project-details {
@@ -145,7 +127,7 @@
             background: #2a2a2a;
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid #084cac;
+            border-left: 4px solid #00bcd4;
         }
 
         .project-info h3 {
@@ -157,13 +139,14 @@
         .project-info p {
             color: #cccccc;
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         .tech-stack {
             background: #2a2a2a;
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid #084cac;
+            border-left: 4px solid #00bcd4;
         }
 
         .tech-stack h3 {
@@ -189,27 +172,17 @@
             -webkit-transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
-            /* Mobile touch improvements */
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
 
         .tech-item:hover {
             background: #505050;
-            border-color: #084cac;
-            box-shadow: 0 0 15px rgba(8, 76, 172, 0.3);
+            border-color: #00bcd4;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
         }
 
-        /* Mobile touch alternative to hover */
-        @media (hover: none) and (pointer: coarse) {
-            .tech-item:active {
-                background: #505050;
-                border-color: #084cac;
-                box-shadow: 0 0 10px rgba(8, 76, 172, 0.3);
-            }
-        }
-
-        /* Tooltip styles */
+        /* Tooltip */
         .tech-item .tooltip {
             visibility: hidden;
             width: 300px;
@@ -230,7 +203,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             font-size: 0.85rem;
             line-height: 1.4;
-            /* Mobile touch improvements */
             -webkit-user-select: none;
             user-select: none;
             pointer-events: none;
@@ -244,37 +216,7 @@
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #084cac transparent transparent transparent;
-        }
-
-        /* Mobile tooltip robust fix */
-        @media (max-width: 768px) {
-            .tech-item .tooltip {
-                position: fixed;
-                left: 50%;
-                bottom: 24px;
-                top: auto;
-                right: auto;
-                transform: translateX(-50%);
-                -webkit-transform: translateX(-50%);
-                width: 95vw;
-                max-width: 420px;
-                min-width: 0;
-                margin: 0;
-                z-index: 9999;
-                box-sizing: border-box;
-                pointer-events: auto;
-            }
-            .tech-item .tooltip::after {
-                display: none;
-            }
-        }
-        @media (max-width: 480px) {
-            .tech-item .tooltip {
-                max-width: 98vw;
-                font-size: 0.75rem;
-                padding: 0.8rem;
-            }
+            border-color: #00bcd4 transparent transparent transparent;
         }
 
         .tech-item:hover .tooltip {
@@ -282,45 +224,12 @@
             opacity: 1;
         }
 
-        /* Mobile touch alternative to hover */
-        @media (hover: none) and (pointer: coarse) {
-            .tech-item:active .tooltip {
-                visibility: visible;
-                opacity: 0.9;
-            }
-        }
-
-        /* Classic tooltip: always above, centered, never overflows, arrow always visible */
-        .tech-item .tooltip {
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 95vw;
-            min-width: 180px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            padding: 1.1rem 1.2rem;
-        }
-        @media (max-width: 600px) {
-            .tech-item .tooltip {
-                font-size: 0.95rem;
-                padding: 0.8rem 0.7rem;
-                min-width: 0;
-            }
-        }
-        /* Prevent overflow: clamp the left position */
-        @media (max-width: 1200px) {
-            .tech-item .tooltip {
-                left: clamp(8px, 50%, calc(100vw - 8px - 300px));
-                transform: none;
-            }
-        }
-
         .project-description {
             background: #2a2a2a;
             padding: 2rem;
             border-radius: 12px;
             margin-bottom: 3rem;
-            border-left: 4px solid #084cac;
+            border-left: 4px solid #00bcd4;
         }
 
         .project-description h3 {
@@ -364,27 +273,16 @@
                 padding: 1.5rem;
             }
 
-            /* Mobile scrolling optimizations */
             body {
                 -webkit-overflow-scrolling: touch;
                 overflow-x: hidden;
             }
 
             .back-link,
-            .contact-link {
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
+            .contact-link,
             .tech-item {
-                touch-action: manipulation;
                 -webkit-tap-highlight-color: transparent;
-            }
-
-            /* Adjust tooltip width for mobile */
-            .tech-item .tooltip {
-                width: 280px;
-                font-size: 0.8rem;
+                touch-action: manipulation;
             }
 
             .project-embed iframe {
@@ -394,7 +292,6 @@
             }
         }
 
-        /* Extra small mobile devices */
         @media (max-width: 480px) {
             header {
                 padding: 0.8rem 1rem;
@@ -429,7 +326,6 @@
                 padding: 0.8rem;
             }
 
-            /* Prevent zoom on input focus */
             input, textarea, select {
                 font-size: 16px;
             }
@@ -482,9 +378,9 @@
 
         .scroll-to-top:hover {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
-            border-color: #084cac;
+            border-color: #00bcd4;
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(8, 76, 172, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 188, 212, 0.3);
         }
 
         .scroll-to-top.visible {
@@ -542,8 +438,9 @@
 
     <main>
         <div class="project-header">
-            <h1 class="project-title">THE COMPASS BOTTLE</h1>
-            <p class="project-subtitle">A Sculptural Water Bottle</p>
+            <h1 class="project-title">PARAMETRIC MOUSE</h1>
+            <p class="project-subtitle">Fully customisable mouse created with Rhino Grasshopper</p>
+            <p class="project-meta">Type: Individual Project&nbsp;&nbsp;|&nbsp;&nbsp;Time: 1 day&nbsp;&nbsp;|&nbsp;&nbsp;Team: Individual</p>
         </div>
 
         <div class="project-embed" style="
@@ -553,64 +450,55 @@
             border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
-        " onmouseover="this.style.border='2px solid #2196f3'; this.style.transform='scale(1.02)'" 
+        " onmouseover="this.style.border='2px solid #00bcd4'; this.style.transform='scale(1.02)'" 
            onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-            <iframe width="100%" height="800" style="border: none; margin: 0; border-radius: 8px; background: #1a1a1a;" src="https://www.canva.com/design/DAHDfLli59I/8YcmjVX9h44kHXCdfmgcfA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+            <iframe width="100%" height="800" style="border: none; margin: 0; border-radius: 8px; background: #1a1a1a;" src="https://www.canva.com/design/DAHDfDVlXlY/HITomqLIgbRF82OaJuDcUA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
         </div>
 
         <div class="project-details">
             <div class="project-info">
                 <h3>Project Overview</h3>
-                <p>This project is an exploration of form and emotion, resulting in an ergonomic water bottle designed for the mindful explorer. It moves beyond simple utility to become an inspirational companion for woodland walks and daily journeys.</p>
-                
-                <p>Guided by a conceptual "word compass" of Happy, Inspirational, and Balance, the design process focused on translating these feelings into a physical form. The bottle is crafted for a specific user—a tall individual seeking a comfortable, secure, and beautiful hydration solution for hiking. Its unique, sculptural shape is designed to rest snugly against the user's leg and hip, while the integrated buckle allows for easy belt attachment.</p>
-                
-                <p>The final design is a harmonious blend of materials and function, featuring a translucent glass body, a warm mahogany wood grip, and a hinged, magnetic cap for secure, one-handed operation.</p>
+                <p>This project explores how far parametric design can be pushed within the constraints of a familiar everyday object: the computer mouse. Using Rhino Grasshopper, the entire mouse geometry is defined procedurally, allowing the designer to generate radically different forms, surfaces, and scroll-wheel patterns from a single script.</p>
+                <p>The core idea is simple: instead of sculpting one “final” shape, the mouse becomes a configurable system. Key dimensions and profiles can be tuned down to 1&nbsp;mm precision, enabling ergonomic fine‑tuning, rapid form exploration, and highly personalised design outcomes.</p>
+                <p>The result is a design tool that can be used to create a whole family of mice—from subtle ergonomic tweaks to extreme concept forms—without rebuilding the model from scratch.</p>
             </div>
 
             <div class="tech-stack">
-                <h3>Technologies Used</h3>
+                <h3>Technologies & Tools</h3>
                 <div class="tech-list">
                     <span class="tech-item">
-                        Rhinoceros 7
+                        Rhino 3D
                         <div class="tooltip">
-                            <strong>Rhinoceros 7</strong><br>
-                            Used for advanced free-form modeling to translate the abstract "squiggly line" concept into a complex, sculptural 3D form with precise surface geometry.
+                            <strong>Rhino 3D</strong><br>
+                            Used as the base modeling environment to host the Grasshopper definition and manage final solid geometry for export and visualization.
                         </div>
                     </span>
                     <span class="tech-item">
-                        KeyShot
+                        Grasshopper
                         <div class="tooltip">
-                            <strong>KeyShot</strong><br>
-                            Used to create photorealistic renderings showcasing the translucent glass body, warm mahogany wood grip, and magnetic cap details for presentation.
+                            <strong>Grasshopper</strong><br>
+                            Used to build the full parametric definition controlling the mouse body, scroll wheel, and coded disc via sliders and graph mappers.
                         </div>
                     </span>
                     <span class="tech-item">
-                        AI Material Inspiration
+                        Graph Mapper
                         <div class="tooltip">
-                            <strong>AI Material Inspiration</strong><br>
-                            Used AI tools to generate hundreds of different material variations and finishes, exploring innovative textures and visual effects for the bottle design.
+                            <strong>Graph Mapper</strong><br>
+                            Used to sculpt profiles along the X, Y, and Z axes, enabling fast exploration of different front and back shapes for the mouse body.
                         </div>
                     </span>
                     <span class="tech-item">
-                        Clay Modeling
+                        Parametric Modelling
                         <div class="tooltip">
-                            <strong>Clay Modeling</strong><br>
-                            Used for hands-on exploration of the "squiggly line" concept, transitioning from 2D sketches to tangible 3D forms for iterative refinement.
+                            <strong>Parametric Modelling</strong><br>
+                            Applied to expose key ergonomic and aesthetic parameters so new mouse variants can be generated on demand.
                         </div>
                     </span>
                     <span class="tech-item">
-                        Ergonomic Analysis
+                        Design Variations
                         <div class="tooltip">
-                            <strong>Ergonomic Analysis</strong><br>
-                            Applied analysis to ensure the bottle rests snugly against the user's leg and hip, with comfortable grip zones and one-handed operation.
-                        </div>
-                    </span>
-                    <span class="tech-item">
-                        Persona-Based Design
-                        <div class="tooltip">
-                            <strong>Persona-Based Design</strong><br>
-                            Designed for a specific user—a tall individual seeking a comfortable, secure hydration solution for hiking with integrated belt attachment.
+                            <strong>Design Variations</strong><br>
+                            Multiple mouse configurations and scroll-wheel patterns are produced from a single definition to demonstrate the flexibility of the system.
                         </div>
                     </span>
                 </div>
@@ -618,38 +506,36 @@
         </div>
 
         <div class="project-description">
-            <h3>Key Features & Design Process</h3>
-            <p>The final form was the result of a rigorous, iterative design journey documented in a comprehensive process book.</p>
-            
-            <p><strong>From 2D to 3D:</strong> The core "squiggly line" concept was evolved through sketches, clay modeling, and advanced 3D modeling in Rhinoceros 7.</p>
-            
-            <p><strong>Iterative Refinement:</strong> The design went through four major versions, with each iteration solving specific problems identified during self-testing—improving the grip, adjusting the size, refining the hinge, and ensuring stability.</p>
-            
-            <p><strong>Functional Details:</strong> The design incorporates a water-level viewing window, filleted edges for safety, and precisely engineered components like the magnetic "snap" closure to provide tactile and audible confirmation that the bottle is sealed.</p>
+            <h3>Shape Formation & Body Modelling</h3>
+            <p>The mouse body is generated from a series of control points that can be moved along the X, Y, and Z axes. By adjusting these points and their associated curves, the designer can freely mould almost any mouse silhouette while maintaining a clean, continuous surface.</p>
+            <p>A graph mapper drives the section profiles along the length of the mouse, allowing the height, width, and curvature of both the front and rear to be tuned in real time. This makes it possible to quickly move from a low, aggressive gaming profile to a taller, more supportive ergonomic shape, without rebuilding the geometry.</p>
         </div>
 
         <div class="project-description">
-            <h3>Design Rationale</h3>
-            <p>This project was a significant milestone in applying advanced free-form modeling techniques to translate an abstract emotional concept into a functional, highly-detailed product. It showcases a deep process of ideation, critical analysis, and iterative refinement.</p>
+            <h3>Scroll Wheel & Coded Disc</h3>
+            <p>The parametric system extends beyond the outer shell to the scroll wheel and internal coded disc. By drawing a simple 2D curve, any ridge pattern for the scroll wheel can be defined and then projected and cut into the wheel surface.</p>
+            <p>Key characteristics—such as ridge size, radius, spacing, and connector length—are all controlled by parameters. The same logic is used to generate a coded disc: a designer can sketch almost any profile, which is then processed by Grasshopper to create a disc with matching cut‑outs, ready to interface with an encoder or sensor system.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Design Variations</h3>
+            <p>The final definition is capable of producing a wide range of mouse designs from a single script. Small adjustments in the graph mapper or point positions yield noticeably different bodies, while more extreme changes produce entirely new concepts that still remain manufacturable.</p>
+            <p>These variations demonstrate how parametric workflows can turn a one‑off model into a flexible design platform—ideal for rapid prototyping, user‑specific ergonomics, or brand‑driven product families.</p>
         </div>
     </main>
 
-    <!-- Copyright Footer -->
     <footer style="background-color: #0f0f0f; padding: 2rem 3rem; margin-top: 4rem; text-align: center; border-top: 1px solid #333;">
         <div style="color: #888888; font-size: 0.9rem;">
             <p>© 2025 Jacob Fletcher. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()"></div>
 
     <script>
-        // Scroll to top functionality
         document.addEventListener('DOMContentLoaded', function() {
             const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            // Show/hide scroll to top button based on scroll position
+
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
                     scrollToTopBtn.classList.add('visible');
@@ -657,8 +543,7 @@
                     scrollToTopBtn.classList.remove('visible');
                 }
             });
-            
-            // Smooth scroll to top function
+
             window.scrollToTop = function() {
                 window.scrollTo({
                     top: 0,
@@ -668,4 +553,5 @@
         });
     </script>
 </body>
-</html> 
+</html>
+
