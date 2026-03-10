@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacob Fletcher - Product Design Portfolio</title>
     <style>
-        /* 
-        ========================================
-        GENERAL STYLES
-        ========================================
-        */
         * {
             margin: 0;
             padding: 0;
@@ -18,55 +13,19 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a; /* Dark background */
+            background-color: #1a1a1a;
             color: #ffffff;
-            /* Mobile scrolling fixes */
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            position: relative; /* Establish stacking context */
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Perfect scrolling experience */
         html {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            /* Enhanced smooth scrolling */
-            scroll-padding-top: 80px; /* Account for fixed nav */
+            scroll-padding-top: 80px;
         }
 
-        /* Optimize scrolling performance */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a; /* Dark background */
-            color: #ffffff;
-            /* Enhanced mobile scrolling */
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            position: relative; /* Establish stacking context */
-            /* Perfect scrolling optimizations */
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            /* Reduce motion for users who prefer it */
-            scroll-behavior: auto;
-        }
-
-        /* Smooth scrolling for users who prefer it */
-        @media (prefers-reduced-motion: no-preference) {
-            html {
-                scroll-behavior: smooth;
-            }
-            body {
-                scroll-behavior: smooth;
-            }
-        }
-
-        /* 
-        ========================================
-        HEADER & NAVIGATION
-        ========================================
-        */
         header {
             padding: 2rem 3rem;
             width: 100%;
@@ -74,9 +33,9 @@
 
         nav {
             display: flex;
-            justify-content: flex-end; /* Pushes nav items to the right */
+            justify-content: flex-end;
             align-items: center;
-            gap: 2rem; /* Space between nav items */
+            gap: 2rem;
         }
 
         nav a {
@@ -89,38 +48,27 @@
         }
 
         nav a:hover {
-            color: #cccccc; /* Slightly faded color on hover */
+            color: #cccccc;
         }
 
-        /* 
-        ========================================
-        SCROLL NAVIGATION
-        ========================================
-        */
         .scroll-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95); /* Dark background with transparency */
-            backdrop-filter: blur(10px); /* Blur effect */
-            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 0 1rem 3rem; /* No padding on left, keep right padding */
-            transform: translateY(-100%); /* Hidden by default */
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Perfect easing */
+            padding: 1rem 0 1rem 3rem;
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            /* Mobile touch improvements */
-            -webkit-transform: translateY(-100%);
-            -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Perfect scrolling optimizations */
             will-change: transform;
-            transform-style: preserve-3d;
         }
 
         .scroll-nav.visible {
-            transform: translateY(0); /* Show when visible */
-            -webkit-transform: translateY(0);
+            transform: translateY(0);
         }
 
         .scroll-nav-content {
@@ -136,8 +84,6 @@
             color: #ffffff;
             text-decoration: none;
             letter-spacing: 1px;
-            margin-left: 0;
-            padding-left: 0;
         }
 
         .scroll-nav-links {
@@ -174,12 +120,7 @@
             background: #ffffff;
             color: #1a1a1a;
         }
-        
-        /* 
-        ========================================
-        HERO SECTION
-        ========================================
-        */
+
         .hero-section {
             padding: 4rem 3rem 3rem 3rem;
             text-align: center;
@@ -217,11 +158,6 @@
             font-weight: 400;
         }
 
-        /* 
-        ========================================
-        FILTER BUTTONS
-        ========================================
-        */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -242,9 +178,6 @@
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
             backdrop-filter: blur(10px);
-            /* Mobile touch improvements */
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
         }
 
         .filter-btn:hover {
@@ -261,50 +194,30 @@
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
 
-        /* 
-        ========================================
-        PORTFOLIO GRID
-        ========================================
-        */
         main {
-            padding: 0 3rem 3rem 3rem; /* Padding around the main content */
+            padding: 0 3rem 3rem 3rem;
         }
 
         .portfolio-grid {
             display: grid;
-            /* This is the magic for responsiveness: */
             grid-template-columns: repeat(auto-fit, minmax(175px, 200px));
-            gap: 2rem; /* The space between your project images */
-            /* Ensure grid items maintain consistent sizing */
+            gap: 2rem;
             grid-auto-rows: 1fr;
-            /* Prevent single items from expanding too much */
             justify-items: center;
-            /* Force consistent sizing regardless of item count */
             align-items: start;
-            /* Center the grid when fewer items */
             justify-content: center;
         }
 
-        /* 
-        ========================================
-        INDIVIDUAL PROJECT ITEMS
-        ========================================
-        */
         .project-item {
-            position: relative; /* Crucial for the text overlay */
-            display: block; /* Makes the whole area a clickable link */
+            position: relative;
+            display: block;
             text-decoration: none;
             color: #ffffff;
-            overflow: hidden; /* Hides parts of the image that zoom out */
-            border-radius: 12px; /* More rounded corners */
-            aspect-ratio: 3 / 4; /* Gives each card a consistent shape (width / height) */
-            /* Mobile touch improvements */
-            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-            touch-action: manipulation; /* Optimize touch interactions */
-            /* Ensure consistent sizing in grid */
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 3 / 4;
             max-width: 500px;
             width: 100%;
-            /* Enhanced visual effects */
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -317,30 +230,13 @@
         .project-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Prevents image from stretching */
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Perfect easing */
-            -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Safari support */
-            /* Mobile touch improvements */
-            -webkit-user-select: none; /* Prevent text selection on mobile */
-            user-select: none;
-            pointer-events: none; /* Prevent image drag on mobile */
-            /* Perfect scrolling optimizations */
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
         }
 
         .project-item:hover img {
-            transform: scale(1.05); /* Zoom in the image slightly on hover */
-            -webkit-transform: scale(1.05);
-        }
-
-        /* Mobile touch alternative to hover */
-        @media (hover: none) and (pointer: coarse) {
-            .project-item:active img {
-                transform: scale(1.02);
-                -webkit-transform: scale(1.02);
-            }
+            transform: scale(1.05);
         }
 
         .project-info {
@@ -349,47 +245,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            
-            /* Center the text perfectly */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
             text-align: center;
             padding: 2rem;
-            
-            opacity: 0; /* Hidden by default */
+            opacity: 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Mobile touch improvements */
-            -webkit-user-select: none;
-            user-select: none;
-            pointer-events: none; /* Allow clicks to pass through to parent */
-            /* Enhanced backdrop */
             backdrop-filter: blur(4px);
         }
 
         .project-item:hover .project-info {
-            opacity: 1; /* Show the overlay on hover */
-        }
-
-        /* Mobile touch alternative to hover */
-        @media (hover: none) and (pointer: coarse) {
-            .project-item:active .project-info {
-                opacity: 0.8;
-            }
+            opacity: 1;
         }
 
         .project-info h2 {
             font-size: 1.6rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
-            transform: translateY(15px); /* Start slightly lower */
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             letter-spacing: 0.5px;
+            transform: translateY(15px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-info p {
@@ -397,91 +275,71 @@
             opacity: 0.95;
             transform: translateY(15px);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transition-delay: 0.1s; /* Delay the paragraph slightly */
+            transition-delay: 0.1s;
             font-weight: 400;
             line-height: 1.4;
         }
-        
+
         .project-item:hover h2,
         .project-item:hover p {
-            transform: translateY(0); /* Move text into position on hover */
-            -webkit-transform: translateY(0);
+            transform: translateY(0);
         }
 
-        /* Mobile touch alternative to hover */
-        @media (hover: none) and (pointer: coarse) {
-            .project-item:active h2,
-            .project-item:active p {
-                transform: translateY(5px);
-                -webkit-transform: translateY(5px);
-            }
-        }
-
-        /* 
-        ========================================
-        RESPONSIVE DESIGN - MOBILE FIRST APPROACH
-        ========================================
-        */
-        
-        /* Large screens (1200px and up) */
         @media (min-width: 1200px) {
             .hero-section {
                 padding: 5rem 4rem 4rem 4rem;
             }
-            
+
             .hero-title {
                 font-size: 3.2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.4rem;
             }
-            
+
             .hero-description {
                 font-size: 1.05rem;
             }
-            
+
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 225px));
                 gap: 2.5rem;
             }
-            
+
             main {
                 padding: 0 4rem 4rem 4rem;
             }
-            
+
             header {
                 padding: 2.5rem 4rem;
             }
         }
-        
-        /* Medium screens (768px to 1199px) */
+
         @media (max-width: 1199px) and (min-width: 769px) {
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fit, minmax(175px, 200px));
                 gap: 2rem;
             }
         }
-        
-        /* Small tablets and large phones (481px to 768px) */
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 3rem 2rem 2rem 2rem;
             }
-            
+
             .hero-title {
                 font-size: 2.8rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.3rem;
             }
-            
+
             .hero-description {
                 font-size: 1rem;
             }
-            
+
             header {
                 padding: 1.5rem 2rem;
             }
@@ -505,17 +363,6 @@
                 gap: 1.5rem;
             }
 
-            nav {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-                /* Mobile touch improvements */
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
             .project-info h2 {
                 font-size: 1.3rem;
             }
@@ -523,69 +370,25 @@
             .project-info p {
                 font-size: 1rem;
             }
-
-            /* Scroll navigation mobile styles */
-            .scroll-nav {
-                padding: 1rem 2rem;
-            }
-
-            .scroll-nav-content {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 1rem;
-            }
-
-            .scroll-nav-logo {
-                font-size: 1.3rem;
-            }
-
-            .scroll-nav-links {
-                gap: 1.5rem;
-            }
-
-            .scroll-nav-links a {
-                font-size: 0.9rem;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
-            .scroll-nav-contact {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
-            /* Mobile scrolling optimizations */
-            body {
-                -webkit-overflow-scrolling: touch;
-                overflow-x: hidden;
-            }
-
-            .project-item {
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
-            }
         }
-        
-        /* Mobile phones (320px to 480px) */
+
         @media (max-width: 480px) {
             .hero-section {
                 padding: 2.5rem 1.5rem 1.5rem 1.5rem;
             }
-            
+
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.1rem;
             }
-            
+
             .hero-description {
                 font-size: 0.95rem;
             }
-            
+
             header {
                 padding: 1rem 1.5rem;
             }
@@ -595,7 +398,6 @@
             }
 
             .portfolio-grid {
-                /* Two-column grid on phones */
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 1rem;
             }
@@ -606,17 +408,6 @@
 
             nav a {
                 font-size: 0.85rem;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
-            /* Make project tiles/icons smaller on phones */
-            .project-item {
-                max-width: 180px;
-                width: 100%;
-                margin: 0 auto;
-                aspect-ratio: 4 / 3; /* shorter cards on phones */
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             }
 
             /* Tile text at top-left on phones - scales with viewport */
@@ -661,55 +452,15 @@
                 color: #000;
             }
 
-            /* Scroll navigation mobile styles */
-            .scroll-nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .scroll-nav-content {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .scroll-nav-logo {
-                font-size: 1.1rem;
-            }
-
-            .scroll-nav-links {
-                gap: 1rem;
-            }
-
-            .scroll-nav-links a {
-                font-size: 0.85rem;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
-            .scroll-nav-contact {
-                font-size: 0.85rem;
-                padding: 0.3rem 0.6rem;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
-
-            /* Enhanced mobile scrolling */
-            body {
-                -webkit-overflow-scrolling: touch;
-                overflow-x: hidden;
-            }
-
             .project-item {
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
-            }
-
-            /* Prevent zoom on input focus */
-            input, textarea, select {
-                font-size: 16px;
+                max-width: 180px;
+                width: 100%;
+                margin: 0 auto;
+                aspect-ratio: 4 / 3;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             }
         }
-        
-        /* Extra small phones (under 320px) */
+
         @media (max-width: 319px) {
             header {
                 padding: 0.8rem 1rem;
@@ -732,7 +483,6 @@
                 font-size: 0.8rem;
             }
 
-            /* Even smaller tiles/icons for very small phones */
             .project-item {
                 max-width: 210px;
                 width: 100%;
@@ -780,54 +530,8 @@
             a[href="project-endless-groove.html"] .project-info p {
                 color: #000;
             }
-
-            /* Scroll navigation mobile styles */
-            .scroll-nav {
-                padding: 0.8rem 1rem;
-            }
-
-            .scroll-nav-content {
-                flex-direction: column;
-                gap: 0.3rem;
-            }
-
-            .scroll-nav-logo {
-                font-size: 1rem;
-            }
-
-            .scroll-nav-links {
-                gap: 0.8rem;
-            }
-
-            .scroll-nav-links a {
-                font-size: 0.8rem;
-            }
-
-            .scroll-nav-contact {
-                font-size: 0.8rem;
-                padding: 0.2rem 0.5rem;
-            }
-            
-            /* Contact section mobile styles */
-            footer#contact {
-                padding: 2rem 1rem !important;
-            }
-            
-            footer#contact h2 {
-                font-size: 2rem !important;
-            }
-            
-            footer#contact p {
-                font-size: 1rem !important;
-            }
-            
-            footer#contact a {
-                font-size: 0.9rem !important;
-                padding: 0.8rem 1.5rem !important;
-            }
         }
-        
-        /* Scroll to top arrow */
+
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
@@ -904,62 +608,10 @@
             transform: translateY(-2px) scale(0.95);
             transition: all 0.1s ease;
         }
-
-        /* Contact section responsive styles */
-        @media (max-width: 768px) {
-            footer#contact {
-                padding: 3rem 2rem !important;
-            }
-            
-            footer#contact h2 {
-                font-size: 2.2rem !important;
-            }
-            
-            footer#contact p {
-                font-size: 1.1rem !important;
-            }
-            
-            footer#contact a {
-                font-size: 0.95rem !important;
-                padding: 0.9rem 1.8rem !important;
-            }
-
-            .scroll-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-            }
-            
-            .scroll-to-top::after {
-                font-size: 1.6rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            footer#contact {
-                padding: 2.5rem 1.5rem !important;
-            }
-            
-            footer#contact h2 {
-                font-size: 2rem !important;
-            }
-            
-            footer#contact p {
-                font-size: 1rem !important;
-            }
-            
-            footer#contact a {
-                font-size: 0.9rem !important;
-                padding: 0.8rem 1.5rem !important;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Scroll Navigation (hidden by default) -->
     <nav class="scroll-nav" id="scroll-nav">
         <div class="scroll-nav-content">
             <a href="#top" class="scroll-nav-logo">JF</a>
@@ -979,17 +631,15 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">Jacob Fletcher</h1>
-            <p class="hero-subtitle">Product Designer & Systems Engineer</p>
+            <p class="hero-subtitle">Product Design Technology & Systems Engineer</p>
             <p class="hero-description">Crafting innovative solutions at the intersection of Science, Design, Data & Technology. From complex systems modeling to intuitive product design.</p>
         </div>
     </section>
 
     <main id="projects">
-        <!-- Filter Buttons -->
         <div class="filter-container">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="product-design">Product Design</button>
@@ -997,8 +647,6 @@
         </div>
 
         <div class="portfolio-grid">
-
-            <!-- PROJECT 1: ATMOSPHERICA (Updated) -->
             <a href="project-atmospherica.html" class="project-item" data-category="product-design it-systems">
                 <img src="images/atmospherica.png" alt="Atmospherica Environmental Simulator">
                 <div class="project-info">
@@ -1007,7 +655,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 2: BELL UH-1 HELICOPTER -->
             <a href="project-huey.html" class="project-item" data-category="product-design">
                 <img src="images/huey.png" alt="3D model of a Bell UH-1 Iroquois helicopter">
                 <div class="project-info">
@@ -1016,7 +663,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 3: NETFLIX SPEAKER -->
             <a href="project-speaker.html" class="project-item" data-category="product-design">
                 <img src="images/netflix-speaker.png" alt="Bluetooth speaker with a retro Netflix design">
                 <div class="project-info">
@@ -1025,7 +671,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 4: PARAMETRIC DESIGN BRIDAL MUSHROOM -->
             <a href="project-parametric.html" class="project-item" data-category="product-design">
                 <img src="images/parametric-design.png" alt="Parametric lamp designed with Rhino Grasshopper">
                 <div class="project-info">
@@ -1034,7 +679,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 5: WATER BOTTLE -->
             <a href="project-waterbottle.html" class="project-item" data-category="product-design">
                 <img src="images/water-bottle.png" alt="Ergonomic Water Bottle Design">
                 <div class="project-info">
@@ -1042,8 +686,7 @@
                     <p>Ergonomic Design & Form Development</p>
                 </div>
             </a>
-            
-            <!-- PROJECT 6: REFORESTER SLINGSTAR -->
+
             <a href="project-slingstar.html" class="project-item" data-category="product-design">
                 <img src="images/slingster.png" alt="Reforester Slingstar Product Render">
                 <div class="project-info">
@@ -1051,8 +694,7 @@
                     <p>Fun & Powerful Seed Dispersal Device</p>
                 </div>
             </a>
-            
-            <!-- PROJECT 7: MINIMALIST SMART HUMIDIFIER -->
+
             <a href="project-humidifier.html" class="project-item" data-category="product-design">
                 <img src="images/humidifer.png" alt="Minimalist Smart Humidifier Design">
                 <div class="project-info">
@@ -1061,7 +703,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 8: PARAMETRIC MOUSE -->
             <a href="project-mouse.html" class="project-item" data-category="product-design">
                 <img src="images/Mouse.png" alt="Parametric Mouse Design">
                 <div class="project-info">
@@ -1070,7 +711,6 @@
                 </div>
             </a>
 
-            <!-- PROJECT 9: ENDLESS GROOVE -->
             <a href="project-endless-groove.html" class="project-item" data-category="product-design">
                 <img src="images/endlessgroove.png" alt="Endless Groove 3-in-1 Festival Kit">
                 <div class="project-info">
@@ -1078,8 +718,7 @@
                     <p>Product-Service System & Festival Innovation</p>
                 </div>
             </a>
-            
-            <!-- PROJECT 10: ENTERPRISE NETWORK INFRASTRUCTURE -->
+
             <a href="project-network-infrastructure.html" class="project-item" data-category="it-systems">
                 <img src="images/network2.png" alt="Enterprise Network Infrastructure">
                 <div class="project-info">
@@ -1087,8 +726,7 @@
                     <p>IT Systems & Network Security Management</p>
                 </div>
             </a>
-            
-            <!-- PROJECT 11: MLOPS PLATFORM -->
+
             <a href="project-mlops-platform.html" class="project-item" data-category="it-systems">
                 <img src="images/brain.png" alt="MLOps Platform">
                 <div class="project-info">
@@ -1096,30 +734,26 @@
                     <p>Complex Pattern Recognition & Automated Response</p>
                 </div>
             </a>
-            
         </div>
     </main>
 
-    <!-- Scroll to Top Button -->
     <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()"></div>
 
-    <!-- Divider Line -->
     <div style="width: 100%; height: 1px; background: linear-gradient(90deg, transparent, #333, transparent); margin: 2rem 0;"></div>
 
-    <!-- Contact Section -->
     <footer id="contact" style="background-color: #0f0f0f; padding: 4rem 3rem; margin-top: 4rem;">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
             <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #ffffff;">Let's Work Together</h2>
             <p style="font-size: 1.2rem; color: #cccccc; margin-bottom: 3rem; line-height: 1.6;">
-                I'm always interested in new opportunities and exciting projects. 
-                Whether you have a question about my work or want to discuss a potential collaboration, 
+                I'm always interested in new opportunities and exciting projects.
+                Whether you have a question about my work or want to discuss a potential collaboration,
                 I'd love to hear from you.
             </p>
-            
+
             <p style="font-size: 1.1rem; color: #ffffff; margin-bottom: 2rem; font-weight: 500;">
-                Email: <a href="mailto:Jacob.marley.fletcher@gmail.com" style="color: #4caf50; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#81c784'" onmouseout="this.style.color='#4caf50'">Jacob.marley.fletcher@gmail.com</a>
+                Email: <a href="mailto:Jacob.marley.fletcher@gmail.com" style="color: #4caf50; text-decoration: none; transition: color 0.3s ease;">Jacob.marley.fletcher@gmail.com</a>
             </p>
-            
+
             <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Jacob.marley.fletcher@gmail.com" target="_blank" style="
                     display: inline-flex;
@@ -1135,15 +769,10 @@
                     transition: all 0.3s ease;
                     font-size: 1rem;
                     cursor: pointer;
-                " onmouseover="this.style.background='#ffffff'; this.style.color='#0f0f0f'" 
-                   onmouseout="this.style.background='transparent'; this.style.color='#ffffff'">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
+                ">
                     Email Me
                 </a>
-                
+
                 <a href="https://www.linkedin.com/in/jacob-fletcher-971b441b6/" target="_blank" style="
                     display: inline-flex;
                     align-items: center;
@@ -1157,16 +786,10 @@
                     border-radius: 4px;
                     transition: all 0.3s ease;
                     font-size: 1rem;
-                " onmouseover="this.style.background='#ffffff'; this.style.color='#0f0f0f'" 
-                   onmouseout="this.style.background='transparent'; this.style.color='#ffffff'">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
+                ">
                     LinkedIn
                 </a>
-                
+
                 <a href="https://www.instagram.com/jakey_fletcher/" target="_blank" style="
                     display: inline-flex;
                     align-items: center;
@@ -1180,17 +803,11 @@
                     border-radius: 4px;
                     transition: all 0.3s ease;
                     font-size: 1rem;
-                " onmouseover="this.style.background='#ffffff'; this.style.color='#0f0f0f'" 
-                   onmouseout="this.style.background='transparent'; this.style.color='#ffffff'">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
+                ">
                     Instagram
                 </a>
             </div>
-            
+
             <div style="color: #888888; font-size: 0.9rem; margin-top: 2rem;">
                 <p>© 2025 Jacob Fletcher. All rights reserved.</p>
             </div>
@@ -1198,50 +815,40 @@
     </footer>
 
     <script>
-        // Perfect Scrolling Implementation
         document.addEventListener('DOMContentLoaded', function() {
             const scrollNav = document.getElementById('scroll-nav');
             let lastScrollTop = 0;
             let ticking = false;
-            
-            // Throttled scroll handler for performance
+
             function handleScroll() {
                 if (!ticking) {
                     requestAnimationFrame(() => {
                         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        
-                        // Enhanced scroll detection with hysteresis
                         if (scrollTop > 150 && scrollTop > lastScrollTop) {
                             scrollNav.classList.add('visible');
                         } else if (scrollTop < 50 || scrollTop < lastScrollTop - 10) {
                             scrollNav.classList.remove('visible');
                         }
-                        
                         lastScrollTop = scrollTop;
                         ticking = false;
                     });
                     ticking = true;
                 }
             }
-            
-            // Optimized scroll event listener
+
             window.addEventListener('scroll', handleScroll, { passive: true });
-            
-            // Perfect smooth scrolling for navigation links
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        const targetPosition = target.offsetTop - 80; // Account for fixed nav
-                        
-                        // Use requestAnimationFrame for smooth scrolling
+                        const targetPosition = target.offsetTop - 80;
                         const startPosition = window.pageYOffset;
                         const distance = targetPosition - startPosition;
                         const duration = 800;
                         let start = null;
-                        
+
                         function animation(currentTime) {
                             if (start === null) start = currentTime;
                             const timeElapsed = currentTime - start;
@@ -1249,40 +856,23 @@
                             window.scrollTo(0, run);
                             if (timeElapsed < duration) requestAnimationFrame(animation);
                         }
-                        
-                        // Perfect easing function
+
                         function easeInOutCubic(t, b, c, d) {
                             t /= d / 2;
                             if (t < 1) return c / 2 * t * t * t + b;
                             t -= 2;
                             return c / 2 * (t * t * t + 2) + b;
                         }
-                        
+
                         requestAnimationFrame(animation);
                     }
                 });
             });
-            
-            // Enhanced touch scrolling for mobile
-            if ('ontouchstart' in window) {
-                document.body.style.webkitOverflowScrolling = 'touch';
-            }
-            
-            // Prevent scroll chaining on mobile
-            document.addEventListener('touchmove', function(e) {
-                if (e.target.closest('.project-item')) {
-                    e.stopPropagation();
-                }
-            }, { passive: true });
-            
-            // Filter functionality
+
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectItems = document.querySelectorAll('.project-item');
-            
-            // Scroll to top functionality
             const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            // Show/hide scroll to top button based on scroll position
+
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
                     scrollToTopBtn.classList.add('visible');
@@ -1290,27 +880,24 @@
                     scrollToTopBtn.classList.remove('visible');
                 }
             });
-            
-            // Smooth scroll to top function
+
             window.scrollToTop = function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             };
-            
+
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
                     button.classList.add('active');
-                    
+
                     const filterValue = button.getAttribute('data-filter');
-                    
+
                     projectItems.forEach(item => {
                         const categories = item.getAttribute('data-category').split(' ');
-                        
+
                         if (filterValue === 'all' || categories.includes(filterValue)) {
                             item.style.display = 'block';
                             item.style.opacity = '0';
@@ -1328,6 +915,6 @@
             });
         });
     </script>
-
 </body>
 </html>
+
