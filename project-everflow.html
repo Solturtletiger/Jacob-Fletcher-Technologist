@@ -86,6 +86,18 @@
             border-left: 4px solid #4caf50;
         }
         .project-description h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .team-member {
+            background: #333333; padding: 1rem; border-radius: 8px; border-left: 3px solid #4caf50;
+            transition: all 0.3s ease;
+        }
+        .team-member:hover { background: #404040; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .team-member h4 { color: #ffffff; font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600; }
+        .linkedin-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: #4caf50; text-decoration: none;
+            font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease;
+        }
+        .linkedin-link:hover { color: #66bb6a; }
         .scroll-to-top {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
             background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
@@ -196,6 +208,43 @@
         <div class="project-description">
             <h3>Additional Explorations</h3>
             <p>The team explored sustainability through a light-tracking solar panel to power the pot renewably. Due to space constraints inside the pot and the 2-month project timeline, the solar tracker was excluded from the final prototype to keep the design simple and user-friendly. The project successfully combines mechanical engineering, embedded software, user-centred industrial design, and business modelling into a smart-home gardening accessory.</p>
+        </div>
+
+        <div class="project-description">
+            <h3>Team & Collaborators</h3>
+            <p>This project was developed in collaboration with the following team members.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Sam Watson</h4>
+                    <div style="display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap;">
+                        <a href="https://www.linkedin.com/in/s4mw4tson/" target="_blank" class="linkedin-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/s4m_watson?igsh=MWwwMWlmc3oweDYyaA==" target="_blank" class="linkedin-link" title="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <h4>Ryan Liau</h4>
+                    <a href="https://www.behance.net/ryanliauzicheng" target="_blank" class="linkedin-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        Behance
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
     <footer style="background-color: #0f0f0f; padding: 2rem 3rem; margin-top: 4rem; text-align: center; border-top: 1px solid #333;">
